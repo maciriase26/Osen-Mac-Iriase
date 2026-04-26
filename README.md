@@ -1,2 +1,2 @@
 # Osen-Mac-Iriase
-My personal protfolio
+My personal portfolio
