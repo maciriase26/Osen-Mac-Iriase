@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Osen Mac-Iriase — Creative Tech, AI Research & Full-Stack Engineering</title>
-    <meta name="description" content="Portfolio of Osen Mac-Iriase — CS Senior at The College of Wooster specializing in Controllable Generative AI, Full-Stack Engineering, HCI, and Educational Tech.">
+    <meta name="description" content="Portfolio of Osen Mac-Iriase — Computer Science Senior at The College of Wooster specializing in Controllable Generative AI, Full-Stack Engineering, HCI, and Educational Tech.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -20,16 +20,16 @@
             --color-pink-rose: #CE8F9E;
             --color-pink-rose-dark: #B66D7F;
             --color-green-army: #818455;
-            --color-green-dark: #5c5e39;
+            --color-green-dark: #575a34;
             --color-green-light: #eaede1;
-            --color-green-label: #60633b;
-            --color-text-main: #383a30;
-            --color-text-muted: #6b6e62;
+            --color-green-label: #5d6137;
+            --color-text-main: #33362a;
+            --color-text-muted: #626656;
             --font-main: 'Georgia', 'Playfair Display', serif;
             --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
-            --shadow-sm: 0 4px 12px rgba(129, 132, 85, 0.06);
-            --shadow-md: 0 10px 25px rgba(129, 132, 85, 0.08);
+            --shadow-sm: 0 4px 14px rgba(129, 132, 85, 0.06);
+            --shadow-md: 0 10px 28px rgba(129, 132, 85, 0.08);
             --shadow-lg: 0 18px 40px rgba(129, 132, 85, 0.12);
             --radius-sm: 12px;
             --radius-md: 20px;
@@ -66,7 +66,7 @@
             overflow-x: hidden;
         }
 
-        /* ----- Custom Cursor (Star) with Smooth Physics ----- */
+        /* Custom Star Cursor */
         #custom-cursor {
             width: 48px;
             height: auto;
@@ -78,17 +78,16 @@
             pointer-events: none;
             z-index: 10000;
             transform: translate(-50%, -50%) scale(1);
-            transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease;
+            transition: transform 0.14s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: none;
             filter: drop-shadow(0 4px 8px rgba(182, 109, 127, 0.25));
         }
 
         #custom-cursor.cursor-hover {
-            transform: translate(-50%, -50%) scale(1.4) rotate(12deg);
-            filter: drop-shadow(0 6px 14px rgba(129, 132, 85, 0.4));
+            transform: translate(-50%, -50%) scale(1.35) rotate(12deg);
+            filter: drop-shadow(0 6px 14px rgba(129, 132, 85, 0.35));
         }
 
-        /* ----- Typography & Base Elements ----- */
         h1, h2, h3, .accent-heading {
             font-family: var(--font-main);
             color: var(--color-green-army);
@@ -105,7 +104,7 @@
             padding: 40px 24px;
         }
 
-        /* ----- Navigation & Header ----- */
+        /* Navigation & Header */
         header {
             text-align: center;
             margin-bottom: 70px;
@@ -120,7 +119,7 @@
         }
 
         header h1:hover {
-            transform: scale(1.02);
+            transform: scale(1.015);
         }
 
         .nav-links {
@@ -166,7 +165,7 @@
             width: 80%;
         }
 
-        /* ----- Hero Section ----- */
+        /* Hero Section */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1.5fr;
@@ -189,18 +188,6 @@
             overflow: hidden;
             box-shadow: 12px 14px 28px rgba(129, 132, 85, 0.12);
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-            position: relative;
-        }
-
-        .headshot-container::before {
-            content: '✨';
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 1.5rem;
-            opacity: 0.8;
-            pointer-events: none;
-            animation: pulseStar 3s ease-in-out infinite;
         }
 
         .headshot-container:hover {
@@ -239,7 +226,6 @@
         .hero-pill {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
             font-size: 0.84rem;
             font-weight: 700;
             padding: 6px 14px;
@@ -262,9 +248,9 @@
             color: var(--color-text-main);
         }
 
-        /* Dual-Track Perspective Banner for Tech Companies & PhD Advisors */
+        /* Dual-Track Perspective Toggle */
         .dual-track-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(249, 246, 244, 0.7));
+            background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(249, 246, 244, 0.75));
             border: 2px solid var(--color-pink-soft);
             border-radius: var(--radius-md);
             padding: 20px 24px;
@@ -283,14 +269,11 @@
         }
 
         .dual-track-title {
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             color: var(--color-green-army);
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .track-toggles {
@@ -304,7 +287,7 @@
         .track-btn {
             background: none;
             border: none;
-            padding: 6px 14px;
+            padding: 6px 16px;
             font-size: 0.82rem;
             font-weight: 700;
             font-family: var(--font-body);
@@ -383,7 +366,7 @@
             transform: translateY(-3px);
         }
 
-        /* ===== SECTION: MY MOST-USED TECH ===== */
+        /* SECTION: MY MOST-USED TECH */
         .tech-section {
             margin: 110px 0 90px 0;
             text-align: center;
@@ -467,11 +450,6 @@
             align-items: start;
         }
 
-        .tech-card:first-child .tech-icon-grid {
-            /* 9 items: row 1 has 5, row 2 has 4 centered */
-            grid-template-columns: repeat(5, 1fr);
-        }
-
         .tech-item {
             display: flex;
             flex-direction: column;
@@ -523,7 +501,6 @@
             font-weight: 700;
         }
 
-        /* Tooltip hint on hover */
         .tech-item::after {
             content: attr(data-tooltip);
             position: absolute;
@@ -548,7 +525,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* ===== SECTION: RELEVANT COURSEWORK ===== */
+        /* SECTION: RELEVANT COURSEWORK (From Wooster Transcript) */
         .coursework-section {
             margin: 90px 0 110px 0;
             text-align: center;
@@ -556,7 +533,7 @@
 
         .coursework-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 22px;
             margin-top: 36px;
             text-align: left;
@@ -564,7 +541,7 @@
 
         .course-card {
             background: var(--color-card-white);
-            border: 1px solid rgba(129, 132, 85, 0.15);
+            border: 1px solid rgba(129, 132, 85, 0.16);
             border-radius: 18px;
             padding: 24px;
             box-shadow: var(--shadow-sm);
@@ -579,6 +556,18 @@
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
             border-color: var(--color-green-army);
+        }
+
+        .course-code-tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-green-army);
+            background: var(--color-green-light);
+            padding: 3px 8px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 8px;
         }
 
         .course-badge {
@@ -642,7 +631,7 @@
             font-family: var(--font-mono);
         }
 
-        /* ===== FEATURED PROJECTS & WORKS ===== */
+        /* FEATURED PROJECTS & WORKS */
         .projects {
             margin-bottom: 110px;
         }
@@ -798,7 +787,7 @@
             transform: translateX(4px);
         }
 
-        /* Senior Thesis Deep Dive Spotlight */
+        /* Senior Thesis Deep Dive Banner (Fixing Alignment completely without cutoffs) */
         .thesis-spotlight-wrapper {
             margin: 40px 0 50px 0;
             background: linear-gradient(135deg, #ffffff 0%, #fcfbf9 100%);
@@ -807,22 +796,33 @@
             padding: 36px;
             box-shadow: var(--shadow-md);
             position: relative;
-            overflow: hidden;
         }
 
-        .thesis-spotlight-wrapper::after {
-            content: 'TOP 3 SENIOR THESIS';
-            position: absolute;
-            top: 20px;
-            right: -40px;
-            background: var(--color-pink-rose);
-            color: #fff;
-            font-size: 0.72rem;
+        .thesis-award-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            background: linear-gradient(90deg, rgba(206, 143, 158, 0.18), rgba(242, 206, 205, 0.25));
+            border: 1px solid var(--color-pink-rose);
+            border-radius: 14px;
+            padding: 10px 18px;
+            margin-bottom: 24px;
+        }
+
+        .award-badge-label {
+            font-size: 0.76rem;
             font-weight: 800;
-            padding: 6px 45px;
-            transform: rotate(45deg);
             letter-spacing: 1px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            text-transform: uppercase;
+            color: var(--color-pink-rose-dark);
+        }
+
+        .award-badge-title {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--color-green-dark);
         }
 
         .thesis-header {
@@ -944,7 +944,7 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* Honours Cards */
+        /* Honours & Certifications */
         .honour-card {
             background-color: var(--color-card-white);
             border: 2px solid var(--color-pink-soft);
@@ -961,6 +961,25 @@
             transform: translateY(-6px);
             border-color: var(--color-pink-rose);
             box-shadow: var(--shadow-md);
+        }
+
+        .honour-category-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 10px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            background: var(--color-green-light);
+            color: var(--color-green-dark);
+            align-self: flex-start;
+        }
+
+        .honour-category-badge.cert {
+            background: rgba(206, 143, 158, 0.2);
+            color: var(--color-pink-rose-dark);
         }
 
         /* Footer */
@@ -1054,7 +1073,6 @@
             transform: translateY(-2px);
         }
 
-        /* Back to top button */
         #back-to-top {
             position: fixed;
             bottom: 30px;
@@ -1067,7 +1085,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             box-shadow: 0 6px 18px rgba(0,0,0,0.15);
             cursor: pointer;
             border: none;
@@ -1087,7 +1105,6 @@
             transform: translateY(-4px);
         }
 
-        /* Toast notification */
         #toast {
             position: fixed;
             bottom: 30px;
@@ -1110,7 +1127,6 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* Scroll Reveal Animation Styles */
         .reveal {
             opacity: 0;
             transform: translateY(28px);
@@ -1122,17 +1138,11 @@
             transform: translateY(0);
         }
 
-        @keyframes pulseStar {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.15) rotate(15deg); }
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Layout Tweaks */
         @media (max-width: 900px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -1171,9 +1181,6 @@
             .thesis-spotlight-wrapper {
                 padding: 24px;
             }
-            .thesis-spotlight-wrapper::after {
-                display: none;
-            }
             .accent-break p {
                 font-size: 1.3rem;
             }
@@ -1182,7 +1189,7 @@
 </head>
 <body>
 
-    <!-- Custom Floating Star Cursor -->
+    <!-- Custom Star Cursor -->
     <div id="custom-cursor"></div>
 
     <div class="container">
@@ -1209,10 +1216,10 @@
                 <h2>Osen Mac-Iriase</h2>
                 
                 <div class="hero-badges">
-                    <span class="hero-pill">🎓 The College of Wooster '26</span>
-                    <span class="hero-pill">💻 B.A. Computer Science</span>
-                    <span class="hero-pill">📚 Young Adolescence Education</span>
-                    <span class="hero-pill status">✨ Seeking SWE & AI / HCI Research Roles</span>
+                    <span class="hero-pill">The College of Wooster '26</span>
+                    <span class="hero-pill">B.A. Computer Science</span>
+                    <span class="hero-pill">Young Adolescence Education Minor</span>
+                    <span class="hero-pill status">Seeking SWE & AI / HCI Research Roles</span>
                 </div>
 
                 <p>
@@ -1222,10 +1229,10 @@
                 <!-- Dual-Track Perspective Toggle: Tailored for Tech Companies & PhD Advisors -->
                 <div class="dual-track-card">
                     <div class="dual-track-header">
-                        <span class="dual-track-title">🔍 Tailored Perspective:</span>
+                        <span class="dual-track-title">Tailored Perspective:</span>
                         <div class="track-toggles">
-                            <button class="track-btn active" id="btn-industry" onclick="switchTrack('industry')">💼 For Tech Companies</button>
-                            <button class="track-btn" id="btn-phd" onclick="switchTrack('phd')">🔬 For PhD Labs & Faculty</button>
+                            <button class="track-btn active" id="btn-industry" onclick="switchTrack('industry')">For Tech Companies</button>
+                            <button class="track-btn" id="btn-phd" onclick="switchTrack('phd')">For PhD Labs & Faculty</button>
                         </div>
                     </div>
                     
@@ -1240,13 +1247,13 @@
 
                 <div class="hero-cta-group">
                     <a href="#projects" class="btn-primary" data-hover="true">Explore Featured Works ↓</a>
-                    <a href="Osen_MacIriase_CV.pdf" class="btn-secondary" download data-hover="true">Download CV (PDF) 📄</a>
-                    <a href="https://github.com/maciriase26" target="_blank" class="btn-secondary" data-hover="true">GitHub ↗</a>
+                    <a href="Osen_MacIriase_CV.pdf" class="btn-secondary" download data-hover="true">Download CV (PDF) ↗</a>
+                    <a href="https://github.com/maciriase26" target="_blank" class="btn-secondary" data-hover="true">GitHub →</a>
                 </div>
             </div>
         </section>
 
-        <!-- ===== SECTION: MY MOST-USED TECH! ===== -->
+        <!-- SECTION: MY MOST-USED TECH -->
         <section class="tech-section reveal" id="tech">
             <h2 class="section-headline">My Most-Used Tech!</h2>
 
@@ -1503,129 +1510,197 @@
             </div>
         </section>
 
-        <!-- ===== SECTION: RELEVANT COURSEWORK ===== -->
+        <!-- SECTION: RELEVANT COURSEWORK (DIRECTLY FROM COLLEGE OF WOOSTER TRANSCRIPT) -->
         <section class="coursework-section reveal" id="coursework">
             <h2 class="section-headline">Relevant Coursework</h2>
-            <p style="max-width: 680px; margin: 0 auto; color: var(--color-text-muted);">
-                Foundational computer science theory and applied computational rigor completed at The College of Wooster.
+            <p style="max-width: 720px; margin: 0 auto; color: var(--color-text-muted);">
+                Official academic coursework completed in Computer Science, Mathematics, and Interdisciplinary Sciences at The College of Wooster.
             </p>
 
             <div class="coursework-grid">
                 <!-- Course 1 -->
                 <div class="course-card" data-hover="true">
                     <div>
-                        <span class="course-badge theory">Theory & Rigor</span>
+                        <span class="course-code-tag">CSCI 20000</span>
+                        <span class="course-badge theory">Core Theory</span>
                         <h4>Algorithm Analysis</h4>
-                        <p>Asymptotic runtime bounds, divide-and-conquer paradigms, greedy strategies, dynamic programming, and NP-completeness reductions.</p>
+                        <p>Asymptotic runtime analysis (Big-O, &Omega;, &Theta;), divide-and-conquer, greedy algorithms, dynamic programming, and formal reduction to NP-completeness.</p>
                     </div>
                     <div class="course-topics">
-                        <span class="topic-pill">Big-O Bounds</span>
+                        <span class="topic-pill">Asymptotics</span>
                         <span class="topic-pill">Dynamic Prog</span>
-                        <span class="topic-pill">NP-Hard</span>
+                        <span class="topic-pill">NP-Completeness</span>
                     </div>
                 </div>
 
                 <!-- Course 2 -->
                 <div class="course-card" data-hover="true">
                     <div>
-                        <span class="course-badge systems">Core CS</span>
-                        <h4>Data Structures & Algorithms</h4>
-                        <p>Implementation of binary search trees, graph traversals (BFS/DFS), priority heaps, hash tables, and computational trade-offs.</p>
+                        <span class="course-code-tag">CSCI 23000</span>
+                        <span class="course-badge systems">Software Systems</span>
+                        <h4>Software Engineering</h4>
+                        <p>Full software development lifecycle, object-oriented system design, modular architecture, test-driven development (TDD), agile sprints, and code reviews.</p>
                     </div>
                     <div class="course-topics">
-                        <span class="topic-pill">Graph Trees</span>
-                        <span class="topic-pill">Hash Maps</span>
-                        <span class="topic-pill">Heaps</span>
+                        <span class="topic-pill">System Architecture</span>
+                        <span class="topic-pill">TDD</span>
+                        <span class="topic-pill">Agile</span>
                     </div>
                 </div>
 
                 <!-- Course 3 -->
                 <div class="course-card" data-hover="true">
                     <div>
-                        <span class="course-badge systems">Full-Stack SWE</span>
-                        <h4>Software Engineering</h4>
-                        <p>Agile development lifecycles, test-driven development (TDD), modular architecture, code reviews, and scalable system integration.</p>
+                        <span class="course-code-tag">CSCI 19902</span>
+                        <span class="course-badge theory">Bioinformatics</span>
+                        <h4>Algorithms for Genome Analysis</h4>
+                        <p>Dynamic programming for biological sequence alignment (Needleman-Wunsch, Smith-Waterman), string pattern matching, motif discovery, and genomic data modeling.</p>
                     </div>
                     <div class="course-topics">
-                        <span class="topic-pill">System Design</span>
-                        <span class="topic-pill">TDD</span>
-                        <span class="topic-pill">CI/CD</span>
+                        <span class="topic-pill">Seq Alignment</span>
+                        <span class="topic-pill">Motif Search</span>
+                        <span class="topic-pill">Genomics</span>
                     </div>
                 </div>
 
                 <!-- Course 4 -->
                 <div class="course-card" data-hover="true">
                     <div>
-                        <span class="course-badge systems">Data Systems</span>
+                        <span class="course-code-tag">CSCI 21400</span>
+                        <span class="course-badge systems">Data Infrastructure</span>
                         <h4>Database Systems</h4>
-                        <p>Relational algebra, schema normalization (3NF/BCNF), SQL query optimization, transactions, ACID consistency, and indexing.</p>
+                        <p>Relational algebra, schema normalization (3NF/BCNF), relational query optimization, transaction processing, ACID guarantees, and index tuning.</p>
                     </div>
                     <div class="course-topics">
-                        <span class="topic-pill">Postgres/MySQL</span>
-                        <span class="topic-pill">Normalization</span>
-                        <span class="topic-pill">Indexing</span>
+                        <span class="topic-pill">Relational Schema</span>
+                        <span class="topic-pill">SQL Optimization</span>
+                        <span class="topic-pill">ACID</span>
                     </div>
                 </div>
 
                 <!-- Course 5 -->
                 <div class="course-card" data-hover="true">
                     <div>
-                        <span class="course-badge theory">Languages</span>
-                        <h4>Programming Languages</h4>
-                        <p>Comparative paradigm analysis (functional, object-oriented, imperative), type systems, operational semantics, and memory models.</p>
+                        <span class="course-code-tag">CSCI 12000 & 12000L</span>
+                        <span class="course-badge systems">Core CS</span>
+                        <h4>Data Structures and Algorithms</h4>
+                        <p>Implementation and analysis of fundamental data structures: balanced binary search trees, hash tables, heaps, graph traversal (BFS/DFS), and algorithmic trade-offs.</p>
                     </div>
                     <div class="course-topics">
-                        <span class="topic-pill">Functional</span>
-                        <span class="topic-pill">Type Systems</span>
-                        <span class="topic-pill">Memory</span>
+                        <span class="topic-pill">Trees & Graphs</span>
+                        <span class="topic-pill">Hash Tables</span>
+                        <span class="topic-pill">Heaps</span>
                     </div>
                 </div>
 
                 <!-- Course 6 -->
                 <div class="course-card" data-hover="true">
                     <div>
-                        <span class="course-badge theory">AI & Generative</span>
-                        <h4>Machine Learning for Creative Practice</h4>
-                        <p>Deep neural architectures, latent diffusion, generative synthesis, loss functions, and interactive human-AI co-creation pipelines.</p>
+                        <span class="course-code-tag">CSCI 22200</span>
+                        <span class="course-badge theory">Languages</span>
+                        <h4>Programming Languages</h4>
+                        <p>Comparative paradigm analysis across functional, imperative, and object-oriented paradigms, type checking, memory management, syntax, and semantics.</p>
                     </div>
                     <div class="course-topics">
-                        <span class="topic-pill">Diffusion</span>
-                        <span class="topic-pill">PyTorch</span>
-                        <span class="topic-pill">Latent Space</span>
+                        <span class="topic-pill">Paradigms</span>
+                        <span class="topic-pill">Type Systems</span>
+                        <span class="topic-pill">Semantics</span>
                     </div>
                 </div>
 
                 <!-- Course 7 -->
                 <div class="course-card" data-hover="true">
                     <div>
-                        <span class="course-badge math">Mathematics</span>
-                        <h4>Mathematical Computing</h4>
-                        <p>Numerical linear algebra, matrix factorizations, floating-point stability, discrete transformations, and computational modeling.</p>
+                        <span class="course-code-tag">CSCI-ELEC3</span>
+                        <span class="course-badge systems">Visual Computing</span>
+                        <h4>Data Visualisation</h4>
+                        <p>Principles of visual perception, multi-dimensional exploratory data analysis, interactive dashboard development, and statistical visual storytelling.</p>
                     </div>
                     <div class="course-topics">
-                        <span class="topic-pill">Linear Algebra</span>
-                        <span class="topic-pill">Eigenvalues</span>
-                        <span class="topic-pill">Numerical</span>
+                        <span class="topic-pill">Interactive Viz</span>
+                        <span class="topic-pill">EDA</span>
+                        <span class="topic-pill">Visual Perception</span>
                     </div>
                 </div>
 
                 <!-- Course 8 -->
                 <div class="course-card" data-hover="true">
                     <div>
+                        <span class="course-code-tag">MATH 13000</span>
                         <span class="course-badge math">Mathematics</span>
-                        <h4>Applied Calculus (Diff & Integral)</h4>
-                        <p>Multivariate rate analysis, gradient descent mechanics, continuous modeling, partial derivatives, and optimization frontiers.</p>
+                        <h4>Mathematical Computing</h4>
+                        <p>Numerical linear algebra, matrix factorizations, floating-point error propagation, computational solving of linear equations, and mathematical modeling.</p>
+                    </div>
+                    <div class="course-topics">
+                        <span class="topic-pill">Linear Algebra</span>
+                        <span class="topic-pill">Matrix Factoring</span>
+                        <span class="topic-pill">Numerical Solvers</span>
+                    </div>
+                </div>
+
+                <!-- Course 9 -->
+                <div class="course-card" data-hover="true">
+                    <div>
+                        <span class="course-code-tag">MATH 11000 & 12000</span>
+                        <span class="course-badge math">Mathematics</span>
+                        <h4>Applied Differential & Integral Calculus</h4>
+                        <p>Multivariate rates of change, continuous modeling, integral calculus, gradient analysis, and optimization foundations for machine learning.</p>
                     </div>
                     <div class="course-topics">
                         <span class="topic-pill">Gradients</span>
                         <span class="topic-pill">Optimization</span>
-                        <span class="topic-pill">Calculus</span>
+                        <span class="topic-pill">Continuous Math</span>
+                    </div>
+                </div>
+
+                <!-- Course 10 -->
+                <div class="course-card" data-hover="true">
+                    <div>
+                        <span class="course-code-tag">CSCI 10200</span>
+                        <span class="course-badge systems">Creative Tech</span>
+                        <h4>Multimedia Computing</h4>
+                        <p>Digital signal processing fundamentals, media compression, image raster manipulation, sound synthesis, and interactive digital interfaces.</p>
+                    </div>
+                    <div class="course-topics">
+                        <span class="topic-pill">Digital Media</span>
+                        <span class="topic-pill">Signal Processing</span>
+                        <span class="topic-pill">Interaction</span>
+                    </div>
+                </div>
+
+                <!-- Course 11 -->
+                <div class="course-card" data-hover="true">
+                    <div>
+                        <span class="course-code-tag">CSCI 11000</span>
+                        <span class="course-badge systems">Foundational</span>
+                        <h4>Imperative Problem Solving</h4>
+                        <p>Structured imperative programming, control flow, functional decomposition, file I/O, error handling, and algorithmic debugging.</p>
+                    </div>
+                    <div class="course-topics">
+                        <span class="topic-pill">Problem Solving</span>
+                        <span class="topic-pill">Control Flow</span>
+                        <span class="topic-pill">Debugging</span>
+                    </div>
+                </div>
+
+                <!-- Course 12 -->
+                <div class="course-card" data-hover="true">
+                    <div>
+                        <span class="course-code-tag">PHIL 21500 & RELS 26949</span>
+                        <span class="course-badge theory">Ethics & Society</span>
+                        <h4>Biomedical Ethics & Bioethics</h4>
+                        <p>Ethical frameworks surrounding healthcare data, emerging computational biotechnology, moral accountability, and technological responsibility.</p>
+                    </div>
+                    <div class="course-topics">
+                        <span class="topic-pill">Bioethics</span>
+                        <span class="topic-pill">Data Ethics</span>
+                        <span class="topic-pill">Governance</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== SECTION: FEATURED PROJECTS & RESEARCH ===== -->
+        <!-- SECTION: FEATURED PROJECTS & RESEARCH -->
         <section class="projects reveal" id="projects">
             <div class="projects-header">
                 <h2>Featured Projects and Research</h2>
@@ -1635,21 +1710,28 @@
             <!-- Project Filters -->
             <div class="project-filters">
                 <button class="filter-btn active" onclick="filterProjects('all')">All Works (7)</button>
-                <button class="filter-btn" onclick="filterProjects('ai')">🧠 AI & Deep Learning</button>
-                <button class="filter-btn" onclick="filterProjects('web')">💻 Full-Stack & Web</button>
-                <button class="filter-btn" onclick="filterProjects('research')">🔬 Research & Bio</button>
+                <button class="filter-btn" onclick="filterProjects('ai')">AI & Deep Learning</button>
+                <button class="filter-btn" onclick="filterProjects('web')">Full-Stack & Web</button>
+                <button class="filter-btn" onclick="filterProjects('research')">Research & Bio</button>
             </div>
 
-            <!-- Senior Thesis Dedicated Deep-Dive Banner -->
+            <!-- Senior Thesis Dedicated Deep-Dive Banner (Clean Alignment without diagonal cutoffs) -->
             <div class="thesis-spotlight-wrapper project-item" data-category="ai research">
+                
+                <!-- Perfectly aligned award banner header -->
+                <div class="thesis-award-banner">
+                    <span class="award-badge-label">DEPARTMENTAL RECOGNITION</span>
+                    <span class="award-badge-title">Top 3 Senior Thesis Project &bull; Department of Computer Science</span>
+                </div>
+
                 <div class="thesis-header">
-                    <span class="thesis-badge">Independently Authored Research</span>
+                    <span class="thesis-badge">Senior Independent Study Thesis</span>
                     <span style="font-size: 0.85rem; color: #737765;">Wooster, OH & Goldsmiths Univ of London</span>
                 </div>
                 
                 <div class="thesis-grid">
                     <div>
-                        <h3 style="font-size: 1.85rem; margin: 0 0 10px 0; color: var(--color-green-army);">Senior Thesis: Controllable Image Synthesis</h3>
+                        <h3 style="font-size: 1.85rem; margin: 0 0 10px 0; color: var(--color-green-army);">Controllability in Generative Image Synthesis</h3>
                         <div class="card-subtitle">Improving Controllability in Image Synthesis using Structural Conditioning (Sketches) & Stable Cascade</div>
                         <p style="margin-top: 12px; color: #404336;">
                             Generative diffusion models often suffer from unpredictable composition when driven solely by text prompts. This year-long independent study investigated how structural conditioning via real-time sketches and edge maps constraints Stable Cascade to follow precise user intent.
@@ -1660,7 +1742,7 @@
                             <li><strong>Honours:</strong> Awarded <em>Top 3 Senior Thesis</em> by the Wooster CS Department; manuscript archived in the College Repository.</li>
                         </ul>
                         <div class="thesis-actions">
-                            <a href="https://www.dropbox.com/scl/fi/vtg5mjvnpb6oz94dgclc3/Osen_Mac-Iriase_I.S.-thesis.pdf?rlkey=eacumgsg5isfafxvt2m38jft4&st=45943re7&e=1&dl=0" target="_blank" class="btn-primary" data-hover="true">Read Full Thesis PDF ↗</a>
+                            <a href="https://www.dropbox.com/scl/fi/vtg5mjvnpb6oz94dgclc3/Osen_Mac-Iriase_I.S.-thesis.pdf?rlkey=eacumgsg5isfafxvt2m38jft4&st=45943re7&e=1&dl=0" target="_blank" class="btn-primary" data-hover="true">Read Thesis PDF ↗</a>
                             <a href="Thesis_JAM.jpeg" target="_blank" class="btn-secondary" data-hover="true">View Thesis JAM Award ↗</a>
                             <a href="https://www.linkedin.com/posts/faith-osen-mac-iriase-66874b248_ncur2026-generativeai-stablediffusion-ugcPost-7452807170636595200-0N0N?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD1VpfABBI3ah6y7jh50lmJhLgBnAwbJlb0" target="_blank" class="btn-secondary" data-hover="true">NCUR Presentation ↗</a>
                         </div>
@@ -1680,13 +1762,13 @@
 
             <div class="grid">
 
-                <!-- 02: Grad Loan Navigator (NEW) -->
+                <!-- 02: Grad Loan Navigator -->
                 <div class="card featured-spotlight project-item" data-category="web">
                     <div>
                         <div class="card-number">02</div>
                         <span class="course-badge systems" style="margin-bottom: 8px;">Full-Stack & Civic Tech</span>
                         <h3>Grad Loan Navigator</h3>
-                        <div class="card-subtitle">Life After Grad PLUS — Financial Guidance & Policy Engine</div>
+                        <div class="card-subtitle">Life After Grad PLUS &mdash; Financial Guidance & Policy Engine</div>
                         <p>
                             A production-grade, bilingual (English & Spanish) web application designed to help graduate students and families navigate the sunset of federal Grad PLUS loans. Features interactive borrowing cap calculators across 4 degree tiers (Associate to Ph.D./M.D.), federal grandfather clause analysis, and transparent private lender comparison tools.
                         </p>
@@ -1748,7 +1830,7 @@
                         <div class="card-number">05</div>
                         <span class="course-badge math" style="margin-bottom: 8px;">Computational Biology</span>
                         <h3>Ecological Dynamics</h3>
-                        <div class="card-subtitle">College of Wooster Biology Dept — Dr. Laura Sirot Lab</div>
+                        <div class="card-subtitle">College of Wooster Biology Dept &mdash; Dr. Laura Sirot Lab</div>
                         <p>
                             Conducted ecological laboratory experiments on mosquito population dynamics. Automated biological data ingestion, statistical hypothesis testing, and scientific visualization for published findings and institutional grant submissions.
                         </p>
@@ -1803,7 +1885,7 @@
 
     </div> 
 
-    <!-- ===== SECTION: TEACHING & IMPACT ===== -->
+    <!-- SECTION: TEACHING & IMPACT -->
     <section class="container reveal" id="teaching">
         <div class="projects-header">
             <h2>Teaching & Impact</h2>
@@ -1856,7 +1938,7 @@
                     <p><strong>Self-Efficacy:</strong> Guided students from simple tutorials to self-directed games, animations, and computational art.</p>
                 </div>
                 <div class="card" style="background-color: var(--color-pink-rose); color: #fff; transform: rotate(1.2deg);" data-hover="true">
-                    <p style="color: #fff;"><strong>Culture of Curiosity:</strong> Built collaborative classroom environments where "broken code" is celebrated as a discovery step.</p>
+                    <p style="color: #fff;"><strong>Culture of Curiosity:</strong> Built collaborative classroom environments where broken code is celebrated as a discovery step.</p>
                 </div>
             </div>
         </div>
@@ -1868,20 +1950,38 @@
         </div>
     </section>
 
-    <!-- ===== SECTION: RECOGNITION & HONOURS ===== -->
+    <!-- SECTION: RECOGNITION, HONOURS & CERTIFICATIONS -->
     <div class="container reveal"> 
         <section id="honours" style="margin-top: 110px;">
             <div class="projects-header">
-                <h2>Recognition & Honours</h2>
-                <div class="section-tag">Awards & Leadership</div>
+                <h2>Recognition, Honours & Certifications</h2>
+                <div class="section-tag">Credentials & Awards</div>
             </div>
             
             <div class="grid">
+
+                <!-- IBM SkillsBuild Data Analytics Certification -->
+                <a href="https://www.credly.com/badges/512f2bbd-a1ec-4011-9649-91d0ace349b9/public_url" target="_blank" style="text-decoration: none; color: inherit;" data-hover="true">
+                    <div class="honour-card" style="border: 2px solid var(--color-pink-rose);">
+                        <div class="card-number">★</div>
+                        <div>
+                            <span class="honour-category-badge cert">Verified Credential</span>
+                            <h3>IBM SkillsBuild &bull; Data Analytics</h3>
+                            <p>Industry-recognized professional certification validating competencies in exploratory data analysis, data cleaning, statistical modeling, and data visualization tools.</p>
+                        </div>
+                        <div>
+                            <div class="project-tags">Data Analytics, IBM, Credly Verified</div>
+                            <div class="project-action-link" style="color: var(--color-pink-rose-dark);">VIEW VERIFIED BADGE ↗</div>
+                        </div>
+                    </div>
+                </a>
+
                 <!-- Award 1: Top 3 Thesis -->
                 <a href="Thesis_JAM.jpeg" target="_blank" style="text-decoration: none; color: inherit;" data-hover="true">
                     <div class="honour-card">
+                        <div class="card-number">★</div>
                         <div>
-                            <div class="card-number">★</div>
+                            <span class="honour-category-badge">Academic Award</span>
                             <h3>Top 3 Most Interesting I.S.</h3>
                             <p>Awarded by the Department of Computer Science at The College of Wooster for original research in structural conditioning for image synthesis.</p>
                         </div>
@@ -1895,8 +1995,9 @@
                 <!-- Award 2: Harvard WECode -->
                 <a href="https://www.wecodeconference.com/meet-tf-2026#:~:text=MEXSA%20at%20CCNY.-,Osen%20Mac%2DIriase,-The%20College%20of" target="_blank" style="text-decoration: none; color: inherit;" data-hover="true">
                     <div class="honour-card">
+                        <div class="card-number">★</div>
                         <div>
-                            <div class="card-number">★</div>
+                            <span class="honour-category-badge">Fellowship</span>
                             <h3>Harvard WECode Fellowship</h3>
                             <p>Selected fellow to attend the world’s largest student-led Women in Tech conference at Harvard University.</p>
                         </div>
@@ -1910,8 +2011,9 @@
                 <!-- Award 3: NCUR 2026 Presenter -->
                 <a href="https://www.linkedin.com/posts/faith-osen-mac-iriase-66874b248_ncur2026-generativeai-stablediffusion-ugcPost-7452807170636595200-0N0N?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD1VpfABBI3ah6y7jh50lmJhLgBnAwbJlb0" target="_blank" style="text-decoration: none; color: inherit;" data-hover="true">
                     <div class="honour-card">
+                        <div class="card-number">★</div>
                         <div>
-                            <div class="card-number">★</div>
+                            <span class="honour-category-badge">Conference Presenter</span>
                             <h3>NCUR 2026 Presenter</h3>
                             <p>Selected to present independent machine learning research at the National Conference on Undergraduate Research (2026).</p>
                         </div>
@@ -1925,8 +2027,9 @@
                 <!-- Award 4: Denison Programming Contest -->
                 <a href="https://wooster.edu/2025/04/28/wooster-computer-programming-teams-finish-in-top-three-at-two-spring-competitions/" target="_blank" style="text-decoration: none; color: inherit;" data-hover="true">
                     <div class="honour-card">
+                        <div class="card-number">★</div>
                         <div>
-                            <div class="card-number">★</div>
+                            <span class="honour-category-badge">Competition</span>
                             <h3>Denison Programming Contest</h3>
                             <p>Secured Third Place at the 35th Annual Denison University Spring Programming Contest (2025 competitive programming).</p>
                         </div>
@@ -1940,7 +2043,7 @@
         </section>
     </div>
 
-    <!-- ===== FOOTER & CONNECT ===== -->
+    <!-- FOOTER & CONNECT -->
     <footer id="connect">
         <div class="footer-content">
             <div>
@@ -1965,12 +2068,12 @@
             <div>
                 <h4>Curriculum Vitae</h4>
                 <p>Download my comprehensive CV detailing academic research, publications, teaching, and technical coursework.</p>
-                <a href="Osen_MacIriase_CV.pdf" class="resume-btn" download data-hover="true">Download CV (PDF) 📄</a>
+                <a href="Osen_MacIriase_CV.pdf" class="resume-btn" download data-hover="true">Download CV (PDF) ↗</a>
             </div>
         </div>
         
         <div style="text-align: center; margin-top: 60px; font-size: 0.85rem; color: #b7bba9;">
-            Designed & Developed by Osen Mac-Iriase • Crafted with semantic HTML, custom CSS, & modern JS
+            Designed & Developed by Osen Mac-Iriase &bull; Crafted with semantic HTML, custom CSS, & modern JS
         </div>
     </footer>
 
@@ -1978,11 +2081,10 @@
     <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top" data-hover="true">↑</button>
 
     <!-- Toast Notification Element -->
-    <div id="toast">Email copied to clipboard! ✨</div>
+    <div id="toast">Email copied to clipboard.</div>
 
-    <!-- ===== INTERACTIVE JAVASCRIPT ===== -->
+    <!-- JAVASCRIPT -->
     <script>
-        // Custom Star Cursor with Smooth Physics & Hover Expansion
         document.addEventListener('DOMContentLoaded', () => {
             const cursor = document.getElementById('custom-cursor');
             const isTouch = window.matchMedia('(pointer: coarse)').matches;
@@ -2008,7 +2110,6 @@
                     isMoving = false;
                 });
 
-                // Smooth Animation Frame Loop
                 function updateCursor() {
                     if (isMoving) {
                         currentX += (mouseX - currentX) * 0.25;
@@ -2020,7 +2121,6 @@
                 }
                 requestAnimationFrame(updateCursor);
 
-                // Add magnetic / scale class when hovering interactive elements
                 const hoverElements = document.querySelectorAll('a, button, [data-hover="true"], .card, .tech-item');
                 hoverElements.forEach(el => {
                     el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
@@ -2028,7 +2128,6 @@
                 });
             }
 
-            // Scroll Reveal Animation via IntersectionObserver
             const revealElements = document.querySelectorAll('.reveal');
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -2045,7 +2144,6 @@
 
             revealElements.forEach(el => revealObserver.observe(el));
 
-            // Back to Top Button Visibility
             const backToTopBtn = document.getElementById('back-to-top');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 400) {
@@ -2056,7 +2154,6 @@
             }, { passive: true });
         });
 
-        // Dual-Track Perspective Switcher
         function switchTrack(track) {
             const industryContent = document.getElementById('track-industry');
             const phdContent = document.getElementById('track-phd');
@@ -2076,7 +2173,6 @@
             }
         }
 
-        // Project Filtering
         function filterProjects(category) {
             const items = document.querySelectorAll('.project-item');
             const buttons = document.querySelectorAll('.filter-btn');
@@ -2105,11 +2201,10 @@
             });
         }
 
-        // Copy Email to Clipboard with Toast Notification
         function copyEmail() {
             const email = 'amazingfaith011@gmail.com';
             navigator.clipboard.writeText(email).then(() => {
-                showToast('Email copied to clipboard! ✨');
+                showToast('Email copied to clipboard.');
             }).catch(() => {
                 showToast('Email: amazingfaith011@gmail.com');
             });
