@@ -3,22 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+    <title>Osen Mac-Iriase — Creative Tech, AI Research & Full-Stack Engineering</title>
+    <meta name="description" content="Portfolio of Osen Mac-Iriase — CS Senior at The College of Wooster specializing in Controllable Generative AI, Full-Stack Engineering, HCI, and Educational Tech.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+    <style>
         :root {
             --color-white: #F9F6F4;
+            --color-paper: #FDFCFA;
+            --color-card-white: #FFFFFF;
             --color-pink-soft: #EACFD9;
             --color-pink-bloom: #F2CECD;
             --color-pink-rose: #CE8F9E;
+            --color-pink-rose-dark: #B66D7F;
             --color-green-army: #818455;
-            --font-main: 'Georgia', serif;
-            --font-body: 'Nunito', sans-serif;        }
+            --color-green-dark: #5c5e39;
+            --color-green-light: #eaede1;
+            --color-green-label: #60633b;
+            --color-text-main: #383a30;
+            --color-text-muted: #6b6e62;
+            --font-main: 'Georgia', 'Playfair Display', serif;
+            --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --shadow-sm: 0 4px 12px rgba(129, 132, 85, 0.06);
+            --shadow-md: 0 10px 25px rgba(129, 132, 85, 0.08);
+            --shadow-lg: 0 18px 40px rgba(129, 132, 85, 0.12);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 32px;
+        }
 
         * {
             box-sizing: border-box;
-            cursor: none; 
+            cursor: none;
+        }
+
+        @media (pointer: coarse), (hover: none) {
+            * {
+                cursor: auto !important;
+            }
+            #custom-cursor {
+                display: none !important;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -27,282 +60,939 @@
             background-color: var(--color-white);
             background-image: url('https://www.transparenttextures.com/patterns/white-paper.png');
             font-family: var(--font-body);
-            color: #4a4a4a;
-            scroll-behavior: smooth;
-            font-size: 1.15rem;
-            line-height: 1.6;
+            color: var(--color-text-main);
+            font-size: 1.12rem;
+            line-height: 1.65;
+            overflow-x: hidden;
         }
 
-        /* ----- Custom Cursor Fix (STAR) ----- */
+        /* ----- Custom Cursor (Star) with Smooth Physics ----- */
         #custom-cursor {
-            width: 60px; /* Forces the large 736px image to scale down */
+            width: 48px;
             height: auto;
-            aspect-ratio: 736/478; /* Matches your PNG dimensions */
+            aspect-ratio: 736/478;
             background-image: url('cursor.png'); 
             background-size: contain;
             background-repeat: no-repeat;
             position: fixed;
             pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%); /* Centers the star on the pointer */
+            z-index: 10000;
+            transform: translate(-50%, -50%) scale(1);
+            transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease;
             display: none;
+            filter: drop-shadow(0 4px 8px rgba(182, 109, 127, 0.25));
         }
 
-        h1, h2, .accent-heading {
+        #custom-cursor.cursor-hover {
+            transform: translate(-50%, -50%) scale(1.4) rotate(12deg);
+            filter: drop-shadow(0 6px 14px rgba(129, 132, 85, 0.4));
+        }
+
+        /* ----- Typography & Base Elements ----- */
+        h1, h2, h3, .accent-heading {
             font-family: var(--font-main);
             color: var(--color-green-army);
             font-weight: normal;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        a {
+            color: inherit;
         }
 
+        .container {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* ----- Navigation & Header ----- */
         header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 70px;
             position: relative;
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             margin: 0;
             letter-spacing: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        header h1:hover {
+            transform: scale(1.02);
         }
 
         .nav-links {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-top: 15px;
-            font-size: 0.9rem;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 18px;
+            font-size: 0.92rem;
             text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #4a4a4a;
-            font-weight: bold;
-            transition: color 0.3s;
+            color: var(--color-text-main);
+            font-weight: 700;
+            position: relative;
+            padding: 6px 10px;
+            border-radius: 20px;
+            transition: all 0.25s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--color-pink-rose);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
 
         .nav-links a:hover {
-            color: var(--color-pink-rose);
+            color: var(--color-pink-rose-dark);
+            background: rgba(234, 207, 217, 0.25);
         }
 
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+
+        /* ----- Hero Section ----- */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1.5fr;
-            gap: 40px;
+            gap: 50px;
             align-items: center;
-            margin-bottom: 120px;
+            margin-bottom: 90px;
         }
 
-        /* --- Headshot with Pink Border --- */
         .headshot-container {
             width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
             aspect-ratio: 1/1;
-            background-color: var(--color-pink-rose); /* The pink border color */
-            padding: 12px; /* Thickness of the border */
-            border-radius: 50% 20% 50% 20%; 
+            background-color: var(--color-pink-rose);
+            padding: 14px;
+            border-radius: 50% 22% 50% 22%;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            box-shadow: 10px 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 12px 14px 28px rgba(129, 132, 85, 0.12);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+            position: relative;
+        }
+
+        .headshot-container::before {
+            content: '✨';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: pulseStar 3s ease-in-out infinite;
+        }
+
+        .headshot-container:hover {
+            transform: rotate(-2deg) scale(1.02);
+            box-shadow: 16px 20px 32px rgba(206, 143, 158, 0.25);
         }
 
         .headshot-container img {
             width: 100%;
-            height: 90%;
+            height: 100%;
             object-fit: cover;
-            /* Inner radius slightly smaller to match the "puffy" curve */
-            border-radius: 50% 20% 50% 20%; 
+            border-radius: 50% 22% 50% 22%;
+            transition: transform 0.5s ease;
+        }
+
+        .headshot-container:hover img {
+            transform: scale(1.04);
         }
 
         .hero-text h2 {
-            font-size: 2.2rem;
+            font-size: 2.6rem;
             margin-top: 0;
+            margin-bottom: 12px;
             border-bottom: 2px dashed var(--color-pink-bloom);
             display: inline-block;
-            padding-bottom: 5px;
+            padding-bottom: 6px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 14px 0 20px 0;
+        }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: var(--color-green-light);
+            color: var(--color-green-dark);
+            border: 1px solid rgba(129, 132, 85, 0.3);
+            letter-spacing: 0.4px;
+        }
+
+        .hero-pill.status {
+            background: rgba(242, 206, 205, 0.4);
+            color: #8c4255;
+            border-color: var(--color-pink-rose);
         }
 
         .hero-text p {
             line-height: 1.8;
-            margin-bottom: 25px;
+            margin-bottom: 22px;
+            color: var(--color-text-main);
         }
 
+        /* Dual-Track Perspective Banner for Tech Companies & PhD Advisors */
+        .dual-track-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(249, 246, 244, 0.7));
+            border: 2px solid var(--color-pink-soft);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            margin: 24px 0;
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(8px);
+        }
+
+        .dual-track-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .dual-track-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-green-army);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .track-toggles {
+            display: flex;
+            background: var(--color-pink-soft);
+            padding: 4px;
+            border-radius: 25px;
+            gap: 4px;
+        }
+
+        .track-btn {
+            background: none;
+            border: none;
+            padding: 6px 14px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            font-family: var(--font-body);
+            color: var(--color-text-main);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .track-btn.active {
+            background: #FFFFFF;
+            color: var(--color-green-dark);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .track-content {
+            font-size: 0.96rem;
+            line-height: 1.6;
+            color: #4a4a4a;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .track-content.active {
+            display: block;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 25px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--color-green-army);
+            color: var(--color-white);
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 14px rgba(129, 132, 85, 0.25);
+            border: 1px solid transparent;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-green-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(129, 132, 85, 0.35);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: transparent;
+            color: var(--color-green-army);
+            padding: 11px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 2px solid var(--color-green-army);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-green-army);
+            color: var(--color-white);
+            transform: translateY(-3px);
+        }
+
+        /* ===== SECTION: MY MOST-USED TECH ===== */
+        .tech-section {
+            margin: 110px 0 90px 0;
+            text-align: center;
+        }
+
+        .section-headline {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-headline::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            width: 60px;
+            height: 3px;
+            background: var(--color-pink-rose);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .tech-cards-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .tech-card {
+            background: var(--color-card-white);
+            border: 1px solid rgba(129, 132, 85, 0.16);
+            border-radius: 24px;
+            padding: 36px 28px;
+            box-shadow: 0 10px 30px rgba(129, 132, 85, 0.05);
+            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--color-pink-rose), var(--color-pink-bloom));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 36px rgba(129, 132, 85, 0.1);
+            border-color: rgba(206, 143, 158, 0.4);
+        }
+
+        .tech-card:hover::before {
+            opacity: 1;
+        }
+
+        .tech-card h3 {
+            text-align: center;
+            font-size: 1.45rem;
+            margin-top: 0;
+            margin-bottom: 34px;
+            color: #1f2119;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .tech-icon-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 22px 14px;
+            justify-items: center;
+            align-items: start;
+        }
+
+        .tech-card:first-child .tech-icon-grid {
+            /* 9 items: row 1 has 5, row 2 has 4 centered */
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            text-decoration: none;
+            width: 100%;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .tech-icon-box {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06));
+        }
+
+        .tech-icon-box svg {
+            width: 44px;
+            height: 44px;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--color-green-label);
+            letter-spacing: 0.2px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-item:hover .tech-icon-box {
+            transform: scale(1.15) rotate(3deg);
+            filter: drop-shadow(0 6px 12px rgba(129, 132, 85, 0.2));
+        }
+
+        .tech-item:hover .tech-label {
+            color: #2e3025;
+            font-weight: 700;
+        }
+
+        /* Tooltip hint on hover */
+        .tech-item::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(5px);
+            background: #2e3025;
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 0.72rem;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.2s ease;
+            z-index: 20;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .tech-item:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ===== SECTION: RELEVANT COURSEWORK ===== */
+        .coursework-section {
+            margin: 90px 0 110px 0;
+            text-align: center;
+        }
+
+        .coursework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+            margin-top: 36px;
+            text-align: left;
+        }
+
+        .course-card {
+            background: var(--color-card-white);
+            border: 1px solid rgba(129, 132, 85, 0.15);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-green-army);
+        }
+
+        .course-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            background: var(--color-green-light);
+            color: var(--color-green-dark);
+            margin-bottom: 12px;
+            align-self: flex-start;
+        }
+
+        .course-badge.theory {
+            background: rgba(234, 207, 217, 0.45);
+            color: #8c4255;
+        }
+
+        .course-badge.systems {
+            background: rgba(242, 206, 205, 0.5);
+            color: #7b4250;
+        }
+
+        .course-badge.math {
+            background: #edeae2;
+            color: #555740;
+        }
+
+        .course-card h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.18rem;
+            color: var(--color-green-army);
+            font-family: var(--font-main);
+            line-height: 1.35;
+        }
+
+        .course-card p {
+            margin: 0;
+            font-size: 0.92rem;
+            color: #585b4f;
+            line-height: 1.55;
+        }
+
+        .course-topics {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .topic-pill {
+            font-size: 0.76rem;
+            background: rgba(249, 246, 244, 0.9);
+            border: 1px solid rgba(129, 132, 85, 0.2);
+            padding: 2px 8px;
+            border-radius: 10px;
+            color: #525547;
+            font-family: var(--font-mono);
+        }
+
+        /* ===== FEATURED PROJECTS & WORKS ===== */
         .projects {
-            margin-bottom: 120px;
+            margin-bottom: 110px;
         }
 
         .projects-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
+            align-items: baseline;
+            margin-bottom: 25px;
             border-bottom: 2px solid var(--color-pink-soft);
-            padding-bottom: 10px;
+            padding-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .projects-header h2 {
+            margin: 0;
+            font-size: 2.2rem;
         }
 
         .section-tag {
             color: var(--color-pink-rose);
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Filter Controls */
+        .project-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            background: var(--color-card-white);
+            border: 1px solid rgba(129, 132, 85, 0.25);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-family: var(--font-body);
+            font-weight: 700;
+            color: var(--color-text-main);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--color-green-army);
+            color: var(--color-green-army);
+            background: var(--color-green-light);
+        }
+
+        .filter-btn.active {
+            background: var(--color-green-army);
+            color: var(--color-white);
+            border-color: var(--color-green-army);
+            box-shadow: 0 4px 12px rgba(129, 132, 85, 0.2);
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 36px;
         }
 
         .card {
             background-color: var(--color-pink-soft);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 8px 8px 18px rgba(0,0,0,0.02);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 8px 10px 22px rgba(0,0,0,0.03);
+            transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.35s ease, border-color 0.3s ease;
             position: relative;
-            transform: rotate(-1deg);
+            transform: rotate(-0.5deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid transparent;
         }
 
         .card:hover {
-            transform: translateY(-5px) rotate(0.5deg);
-            box-shadow: 10px 10px 22px rgba(0,0,0,0.04);
+            transform: translateY(-7px) rotate(0.8deg);
+            box-shadow: 12px 16px 28px rgba(129, 132, 85, 0.12);
+        }
+
+        .card.featured-spotlight {
+            border: 2px solid var(--color-green-army);
+            background: #fff;
+            transform: rotate(0deg);
+        }
+
+        .card.featured-spotlight:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: var(--color-pink-rose);
         }
 
         .card h3 {
             margin-top: 0;
+            margin-bottom: 8px;
             color: var(--color-green-army);
             font-family: var(--font-main);
+            font-size: 1.55rem;
         }
 
         .card-number {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 24px;
+            right: 24px;
             color: var(--color-pink-rose);
             font-weight: bold;
             font-family: var(--font-main);
+            font-size: 1.25rem;
+        }
+
+        .card-subtitle {
+            font-size: 0.88rem;
+            font-style: italic;
+            color: #606354;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 1.02rem;
+            line-height: 1.65;
+            margin-bottom: 16px;
         }
 
         .project-tags {
             font-size: 0.8rem;
             text-transform: uppercase;
             color: var(--color-green-army);
-            margin-top: 20px;
+            margin-top: 18px;
             letter-spacing: 1px;
+            font-weight: 700;
         }
 
+        .project-action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 18px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--color-green-army);
+            text-decoration: none;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .project-action-link:hover {
+            color: var(--color-pink-rose-dark);
+            transform: translateX(4px);
+        }
+
+        /* Senior Thesis Deep Dive Spotlight */
+        .thesis-spotlight-wrapper {
+            margin: 40px 0 50px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #fcfbf9 100%);
+            border: 2px solid var(--color-pink-rose);
+            border-radius: 28px;
+            padding: 36px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thesis-spotlight-wrapper::after {
+            content: 'TOP 3 SENIOR THESIS';
+            position: absolute;
+            top: 20px;
+            right: -40px;
+            background: var(--color-pink-rose);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 6px 45px;
+            transform: rotate(45deg);
+            letter-spacing: 1px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .thesis-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 16px;
+        }
+
+        .thesis-badge {
+            background: var(--color-pink-bloom);
+            color: #7b3648;
+            font-weight: 800;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .thesis-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .thesis-highlights-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .thesis-highlights-list li {
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+            color: #44473b;
+        }
+
+        .thesis-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        /* Accent Break Quote */
         .accent-break {
             background-color: var(--color-green-army);
             color: var(--color-white);
-            padding: 30px 40px;
+            padding: 34px 44px;
             border-radius: 40px;
             text-align: center;
-            margin-bottom: 100px;
-            transform: rotate(0.5deg);
+            margin: 100px 0;
+            transform: rotate(0.4deg);
+            box-shadow: 0 12px 28px rgba(129, 132, 85, 0.2);
+            transition: transform 0.3s ease;
         }
-        /* Impact Section Specific Styling */
+
+        .accent-break:hover {
+            transform: rotate(-0.4deg) scale(1.01);
+        }
+
+        .accent-break p {
+            margin: 0;
+            font-size: 1.6rem;
+            font-family: var(--font-main);
+            letter-spacing: 0.5px;
+        }
+
+        /* Teaching Section */
         .teaching-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
 
         .impact-card {
-            background-color: var(--color-white);
+            background-color: var(--color-card-white);
             border: 2px dashed var(--color-pink-rose);
-            padding: 30px;
+            padding: 32px;
             border-radius: 25px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-5px);
+            border-style: solid;
+            box-shadow: var(--shadow-md);
         }
 
         .impact-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.55rem;
             color: var(--color-green-army);
-            margin-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 16px;
         }
 
         .impact-card ul {
-            padding-left: 20px;
+            padding-left: 22px;
             margin: 0;
         }
 
         .impact-card li {
             margin-bottom: 10px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #555;
         }
 
         .story-box {
             background-color: var(--color-pink-soft);
             padding: 40px;
-            border-radius: 40px;
-            margin-top: 80px;
+            border-radius: 36px;
+            margin-top: 70px;
             border-left: 10px solid var(--color-pink-rose);
             font-style: italic;
-            font-size: 1.2rem;
+            font-size: 1.22rem;
+            line-height: 1.7;
+            box-shadow: var(--shadow-sm);
         }
 
-        #honours .projects-header {
+        /* Honours Cards */
+        .honour-card {
+            background-color: var(--color-card-white);
+            border: 2px solid var(--color-pink-soft);
+            padding: 28px;
+            border-radius: 24px;
+            transition: all 0.35s ease;
             display: flex;
-            justify-content: space-between; /* Pushes title left and tag right */
-            align-items: baseline;        /* Aligns the bottom of both text elements */
-            margin-bottom: 40px;
-            border-bottom: 2px solid var(--color-pink-soft);
-            padding-bottom: 10px;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
         }
-        
-        #honours h2 {
-            margin: 0;
-            font-size: 2.2rem;
-            font-family: var(--font-main);
-            color: var(--color-green-army);
+
+        .honour-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--color-pink-rose);
+            box-shadow: var(--shadow-md);
         }
-        
-        #honours .section-tag {
-            margin: 0;
-            color: var(--color-pink-rose);
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
+
+        /* Footer */
         footer {
-            background-color: rgb(98, 100, 64);
+            background-color: rgb(92, 94, 57);
             color: var(--color-white);
-            padding: 80px 20px;
-            margin-top: auto;
+            padding: 85px 24px;
+            margin-top: 100px;
             border-top: 15px solid var(--color-pink-rose);
         }
 
         .footer-content {
-            max-width: 1000px;
+            max-width: 1040px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 48px;
         }
 
         footer h4 {
             font-family: var(--font-main);
             font-weight: normal;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--color-pink-bloom);
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         footer p, footer li {
-            font-size: 0.95rem;
-            color: #ddd;
+            font-size: 0.98rem;
+            color: #e2e4dc;
+            line-height: 1.7;
         }
 
         footer ul {
@@ -312,283 +1002,1127 @@
         }
 
         footer li {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         footer a {
             color: var(--color-pink-bloom);
             text-decoration: none;
             transition: color 0.3s;
+            display: inline-block;
         }
 
         footer a:hover {
-            color: var(--color-white);
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
+        .copy-email-btn {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 6px 12px;
+            border-radius: 14px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-left: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .copy-email-btn:hover {
+            background: var(--color-pink-rose);
+            border-color: var(--color-pink-rose);
         }
 
         .resume-btn {
             display: inline-block;
             background-color: var(--color-pink-rose);
             color: var(--color-white);
-            padding: 12px 24px;
+            padding: 13px 26px;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: background 0.3s;
+            font-weight: 700;
+            font-size: 0.96rem;
+            margin-top: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
         }
 
         .resume-btn:hover {
             background-color: var(--color-pink-bloom);
-            color: var(--color-green-army);
+            color: var(--color-green-dark);
+            transform: translateY(-2px);
         }
 
+        /* Back to top button */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--color-green-army);
+            color: #fff;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+            cursor: pointer;
+            border: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        #back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #back-to-top:hover {
+            background: var(--color-pink-rose);
+            transform: translateY(-4px);
+        }
+
+        /* Toast notification */
+        #toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #2e3025;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10001;
+        }
+
+        #toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Scroll Reveal Animation Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes pulseStar {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.15) rotate(15deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Layout Tweaks */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 36px;
+            }
+            .hero-text h2 {
+                display: inline-block;
+            }
+            .hero-badges, .hero-cta-group {
+                justify-content: center;
+            }
+            .tech-cards-container {
+                grid-template-columns: 1fr;
+            }
+            .thesis-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                gap: 14px;
+                font-size: 0.82rem;
+            }
+            .tech-icon-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 18px 10px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .thesis-spotlight-wrapper {
+                padding: 24px;
+            }
+            .thesis-spotlight-wrapper::after {
+                display: none;
+            }
+            .accent-break p {
+                font-size: 1.3rem;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Custom Floating Star Cursor -->
     <div id="custom-cursor"></div>
 
     <div class="container">
+        <!-- Site Header & Navigation -->
         <header>
             <h1>Sincerely, Osen ♡</h1>
             <nav class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Works</a>
-                <a href="#teaching">Teaching</a>
-                <a href="#honours">Honours</a>
-                <a href="#connect">Connect</a>
+                <a href="#about" data-hover="true">About</a>
+                <a href="#tech" data-hover="true">Tech Stack</a>
+                <a href="#coursework" data-hover="true">Coursework</a>
+                <a href="#projects" data-hover="true">Works</a>
+                <a href="#teaching" data-hover="true">Teaching</a>
+                <a href="#honours" data-hover="true">Honours</a>
+                <a href="#connect" data-hover="true">Connect</a>
             </nav>
         </header>
 
-        <section class="hero" id="about">
-            <div class="headshot-container">
-                <img src="headshot.jpg" alt="Osen">
+        <!-- Hero Section -->
+        <section class="hero reveal" id="about">
+            <div class="headshot-container" data-hover="true">
+                <img src="headshot.jpg" alt="Osen Mac-Iriase">
             </div>
             <div class="hero-text">
                 <h2>Osen Mac-Iriase</h2>
-                <p> I am a Computer Science major & Education minor student at The College of Wooster with a focus on front-end development and creative technology. I’m interested in building tools that feel intuitive, visually engaging, and actually useful to people.
-                My work sits at the intersection of design and engineering. I’ve taught coding and digital media to students, supported technical systems, and worked on projects involving image generation and diffusion models. Through that, I’ve developed a strong interest in how users interact with complex systems, and how to make those systems more transparent and controllable.
-                I’m currently exploring ways to combine structured inputs with generative models, with a focus on improving user control and interpretability.
+                
+                <div class="hero-badges">
+                    <span class="hero-pill">🎓 The College of Wooster '26</span>
+                    <span class="hero-pill">💻 B.A. Computer Science</span>
+                    <span class="hero-pill">📚 Young Adolescence Education</span>
+                    <span class="hero-pill status">✨ Seeking SWE & AI / HCI Research Roles</span>
+                </div>
+
+                <p>
+                    I sit at the vibrant intersection of human-computer interaction, creative technology, and software engineering. From training real-time diffusion models with structural sketch conditioning to building production-grade bilingual web applications, I care deeply about creating intelligent tools that feel intuitive, responsive, and truly empowering to humans.
                 </p>
-                <div class="accent-heading">Est. MMVI</div>
+
+                <!-- Dual-Track Perspective Toggle: Tailored for Tech Companies & PhD Advisors -->
+                <div class="dual-track-card">
+                    <div class="dual-track-header">
+                        <span class="dual-track-title">🔍 Tailored Perspective:</span>
+                        <div class="track-toggles">
+                            <button class="track-btn active" id="btn-industry" onclick="switchTrack('industry')">💼 For Tech Companies</button>
+                            <button class="track-btn" id="btn-phd" onclick="switchTrack('phd')">🔬 For PhD Labs & Faculty</button>
+                        </div>
+                    </div>
+                    
+                    <div class="track-content active" id="track-industry">
+                        <strong>Engineering Strengths:</strong> Full-stack TypeScript & React architecture, bilingual internationalization (i18n), Python/PyTorch computer vision pipelines, modular system design, database modeling (SQL, Supabase), and production UI/UX design systems. Experienced in translating ambiguous user needs into high-impact digital products.
+                    </div>
+                    
+                    <div class="track-content" id="track-phd">
+                        <strong>Research Rigor:</strong> Senior Thesis researching controllability in diffusion models (Stable Cascade) via sketch conditioning and sub-second StreamDiffusion inference. Research experience across The College of Wooster & Goldsmiths University of London. NCUR 2026 presenter, Top 3 Senior Thesis recipient, and computational biology modeling in Dr. Laura Sirot's lab.
+                    </div>
+                </div>
+
+                <div class="hero-cta-group">
+                    <a href="#projects" class="btn-primary" data-hover="true">Explore Featured Works ↓</a>
+                    <a href="Osen_MacIriase_CV.pdf" class="btn-secondary" download data-hover="true">Download CV (PDF) 📄</a>
+                    <a href="https://github.com/maciriase26" target="_blank" class="btn-secondary" data-hover="true">GitHub ↗</a>
+                </div>
             </div>
         </section>
 
-        <section class="projects" id="projects">
+        <!-- ===== SECTION: MY MOST-USED TECH! ===== -->
+        <section class="tech-section reveal" id="tech">
+            <h2 class="section-headline">My Most-Used Tech!</h2>
+
+            <div class="tech-cards-container">
+                <!-- Card 1: Programming Languages -->
+                <div class="tech-card">
+                    <h3>Programming Languages</h3>
+                    <div class="tech-icon-grid">
+                        
+                        <!-- JavaScript -->
+                        <div class="tech-item" data-tooltip="ES6+, Async, DOM" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <rect width="48" height="48" rx="8" fill="#F7DF1E"/>
+                                    <path d="M29 34.5c.9.5 2 1 3.4 1 2 0 3.2-1 3.2-2.5v-13h3.8v13.1c0 3.8-2.3 5.7-6.8 5.7-2.4 0-4.3-.8-5.3-1.6l1.7-2.7zm-14.7.7c1.3.8 3 1.3 4.8 1.3 2.7 0 4.2-1.3 4.2-3.3 0-1.8-1.2-2.8-3.9-3.8-3.4-1.2-5.3-2.9-5.3-5.7 0-3.1 2.5-5.5 6.4-5.5 2.1 0 3.8.6 4.8 1.2l-1.3 3.1c-.8-.5-2.1-1-3.6-1-1.8 0-2.8 1-2.8 2.2 0 1.6 1.1 2.4 3.7 3.4 3.7 1.4 5.5 3 5.5 6.1 0 3.4-2.6 5.8-7.5 5.8-2.3 0-4.4-.7-5.5-1.4l1.6-3.4z" fill="#000000"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">JavaScript</span>
+                        </div>
+
+                        <!-- HTML -->
+                        <div class="tech-item" data-tooltip="Semantic, Accessible HTML5" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <path d="M7.7 5l3.5 38.8 12.8 3.6 12.8-3.6 3.5-38.8H7.7z" fill="#E34F26"/>
+                                    <path d="M24 8.2v35.8l10-2.8 2.8-31H24z" fill="#EF652A"/>
+                                    <path d="M15 15h18l-.5 4.8H19.7l.4 4.8H32l-1 10.4-7 1.9-7-1.9-.5-5.6h4.5l.2 2.6 2.8.8 2.8-.8.4-4.2h-12L15 15z" fill="#FFFFFF"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">HTML</span>
+                        </div>
+
+                        <!-- CSS -->
+                        <div class="tech-item" data-tooltip="Modern Layouts, Keyframes, Tokens" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <path d="M7.7 5l3.5 38.8 12.8 3.6 12.8-3.6 3.5-38.8H7.7z" fill="#1572B6"/>
+                                    <path d="M24 8.2v35.8l10-2.8 2.8-31H24z" fill="#33A9DC"/>
+                                    <path d="M24 15v4.8h8.5l-.5 4.8H24v4.8h7.2l-.7 7.7-6.5 1.8V44l10-2.8 1.3-14.6.4-4.8.7-6.8H24zm-9 0l.4 4.8h8.6V15H15zm.8 9.6l.4 4.8h7.8v-4.8h-8.2zm.9 9.9l-.3-3.3h-4.6l.7 7.7 7.2 2v-4.8l-3-1.6z" fill="#FFFFFF"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">CSS</span>
+                        </div>
+
+                        <!-- Python -->
+                        <div class="tech-item" data-tooltip="ML, Deep Learning, Automation" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <path d="M23.5 4c-5.5 0-9.8.7-10.8 3.8-.9 2.7-.9 5.8 0 8.7h11.3v3H8c-3.1 0-5.8 1.9-6.8 5.6-1.1 4.3-1.1 7 0 11.3 1 3.7 2.8 5.6 5.9 5.6h3.4v-4.9c0-3.6 3.2-6.6 6.8-6.6h11.2c2.9 0 5.4-2.2 5.4-5.2V9.4c0-3.2-2.5-5.4-5.4-5.4h-5z" fill="#387EB8"/>
+                                    <path d="M24.5 44c5.5 0 9.8-.7 10.8-3.8.9-2.7.9-5.8 0-8.7H24v-3h16c3.1 0 5.8-1.9 6.8-5.6 1.1-4.3 1.1-7 0-11.3-1-3.7-2.8-5.6-5.9-5.6h-3.4v4.9c0 3.6-3.2 6.6-6.8 6.6H19.5c-2.9 0-5.4 2.2-5.4 5.2v15.9c0 3.2 2.5 5.4 5.4 5.4h5z" fill="#FFE052"/>
+                                    <circle cx="18" cy="10" r="1.8" fill="#FFFFFF"/>
+                                    <circle cx="30" cy="38" r="1.8" fill="#FFFFFF"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">Python</span>
+                        </div>
+
+                        <!-- Java -->
+                        <div class="tech-item" data-tooltip="OOP, Data Structures, Concurrency" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <path d="M19.5 35.5c-4.4.2-8.3 1.2-8.3 2.7 0 1.9 6.2 3.3 13.2 3.3s13.2-1.4 13.2-3.3c0-1.5-3.9-2.5-8.3-2.7 2.8-.7 5.1-1.6 5.1-2.7 0-.4-.3-.8-.9-1.2-1.5-.9-4.8-1.3-8.8-1.3-4.1 0-7.4.4-8.9 1.3-.6.4-.9.8-.9 1.2 0 1.1 2.3 2 4.6 2.7z" fill="#E76F00"/>
+                                    <path d="M21 24.5c2.5 1.5 5.2 2.8 7.8 2.8 1.4 0 2.2-.4 2.2-1.1 0-1.8-4.8-3.2-7.8-5.2-3.8-2.6-4.5-5.9-2.2-8.7 1.8 1.5 4 3 6.3 3.9 1.5.6 2.9 1 3.5 1.5-1.5-2.9-4.6-5.2-7.5-6.7-1.1-.6-2.1-1.1-3-1.6 4.8.6 9.4 3.7 10.9 8.2 1.8 5.3-2 8.5-6.2 10.9-1.5.8-3 1.6-4 2.5z" fill="#5382A1"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">Java</span>
+                        </div>
+
+                        <!-- R -->
+                        <div class="tech-item" data-tooltip="Statistics, Ecological Data, Bio" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <ellipse cx="23" cy="24" rx="20" ry="15" fill="#CAD3DD"/>
+                                    <ellipse cx="22" cy="24" rx="14" ry="9" fill="#FFFFFF"/>
+                                    <path d="M23 12h-7v24h6v-8h1.2l5.6 8h7.2l-6.8-9.4c3.4-1 5.8-3.7 5.8-7.3 0-4.6-3.8-7.3-12-7.3zm0 4.8c4.2 0 6.2.8 6.2 2.8s-2 2.8-6.2 2.8h-1.5v-5.6h1.5z" fill="#2066B8"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">R</span>
+                        </div>
+
+                        <!-- TypeScript -->
+                        <div class="tech-item" data-tooltip="Type-Safe React, Full-Stack" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <rect width="48" height="48" rx="8" fill="#3178C6"/>
+                                    <path d="M23 20h-8v-3h19v3h-8v17h-3V20zm14.8 7.4c1.2.8 2.6 1.4 4.1 1.4 1.8 0 2.8-.8 2.8-1.9 0-1.2-1-1.8-3.2-2.5-3.3-1.1-5.1-2.7-5.1-5.3 0-3.3 2.6-5.5 6.7-5.5 2 0 3.7.6 4.7 1.2l-1.1 2.8c-.8-.5-2-1-3.6-1-1.9 0-2.9.9-2.9 2 0 1.2.9 1.7 3.3 2.5 3.5 1.2 5.1 2.8 5.1 5.4 0 3.6-2.7 5.6-7 5.6-2.2 0-4.3-.7-5.4-1.4l1.6-3.3z" fill="#FFFFFF"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">TypeScript</span>
+                        </div>
+
+                        <!-- C++ -->
+                        <div class="tech-item" data-tooltip="Performance, Algorithms, Systems" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <polygon points="24,4 42,14 42,34 24,44 6,34 6,14" fill="#00599C"/>
+                                    <polygon points="24,8 38,16 38,32 24,40 10,32 10,16" fill="#004482"/>
+                                    <path d="M22 28.5c-1 1-2.4 1.5-4 1.5-3.6 0-6-2.6-6-6s2.4-6 6-6c1.6 0 3 .5 4 1.5l2.2-2.4c-1.6-1.5-3.7-2.3-6.2-2.3-5.5 0-9.5 4-9.5 9.2s4 9.2 9.5 9.2c2.5 0 4.6-.8 6.2-2.3l-2.2-2.4zm5-6h2v-2h2v2h2v2h-2v2h-2v-2h-2v-2zm9 0h2v-2h2v2h2v2h-2v2h-2v-2h-2v-2z" fill="#FFFFFF"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">C++</span>
+                        </div>
+
+                        <!-- SQL -->
+                        <div class="tech-item" data-tooltip="Relational Schema, Indexing, Joins" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <ellipse cx="24" cy="11" rx="17" ry="6" fill="#00758F"/>
+                                    <path d="M7 11v13c0 3.3 7.6 6 17 6s17-2.7 17-6V11" fill="none" stroke="#00758F" stroke-width="4"/>
+                                    <path d="M7 24v13c0 3.3 7.6 6 17 6s17-2.7 17-6V24" fill="none" stroke="#F29111" stroke-width="4"/>
+                                    <text x="24" y="27" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#FFFFFF" text-anchor="middle">SQL</text>
+                                </svg>
+                            </div>
+                            <span class="tech-label">SQL</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Card 2: Frameworks/Technologies -->
+                <div class="tech-card">
+                    <h3>Frameworks/Technologies</h3>
+                    <div class="tech-icon-grid">
+
+                        <!-- PyTorch -->
+                        <div class="tech-item" data-tooltip="Diffusion Models, Deep Learning" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <path d="M26 8l-2.4 2.4c4.8 4.8 4.8 12.6 0 17.4-4.8 4.8-12.6 4.8-17.4 0l-2.4 2.4c6.1 6.1 16 6.1 22.2 0 6.1-6.1 6.1-16 0-22.2z" fill="#EE4C2C"/>
+                                    <circle cx="28.5" cy="11.5" r="3" fill="#EE4C2C"/>
+                                    <path d="M23 15l-1.5 1.5c2.5 2.5 2.5 6.5 0 9s-6.5 2.5-9 0l-1.5 1.5c3.3 3.3 8.7 3.3 12 0s3.3-8.7 0-12z" fill="#EE4C2C"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">PyTorch</span>
+                        </div>
+
+                        <!-- NumPy -->
+                        <div class="tech-item" data-tooltip="Tensor Operations, Linear Algebra" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <polygon points="24,6 40,15 40,33 24,42 8,33 8,15" fill="#013243"/>
+                                    <polygon points="24,6 40,15 24,24 8,15" fill="#4DABCF"/>
+                                    <polygon points="24,24 40,15 40,33 24,42" fill="#2E7E9E"/>
+                                    <text x="24" y="27" font-family="'Nunito', sans-serif" font-weight="900" font-size="11" fill="#FFFFFF" text-anchor="middle">NP</text>
+                                </svg>
+                            </div>
+                            <span class="tech-label">NumPy</span>
+                        </div>
+
+                        <!-- React -->
+                        <div class="tech-item" data-tooltip="Components, Hooks, SPA" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <ellipse cx="24" cy="24" rx="19" ry="7.5" fill="none" stroke="#61DAFB" stroke-width="2.5" transform="rotate(30 24 24)"/>
+                                    <ellipse cx="24" cy="24" rx="19" ry="7.5" fill="none" stroke="#61DAFB" stroke-width="2.5" transform="rotate(90 24 24)"/>
+                                    <ellipse cx="24" cy="24" rx="19" ry="7.5" fill="none" stroke="#61DAFB" stroke-width="2.5" transform="rotate(150 24 24)"/>
+                                    <circle cx="24" cy="24" r="3.5" fill="#61DAFB"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">React</span>
+                        </div>
+
+                        <!-- Django -->
+                        <div class="tech-item" data-tooltip="Python Web, REST APIs, ORM" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <rect width="48" height="48" rx="8" fill="#092E20"/>
+                                    <path d="M23 11h5v19c-1.5.3-3.2.5-4.8.5-5 0-7.8-2.3-7.8-6.8 0-4.4 3-7.2 7.6-7.2zm0 4.6c-2.4 0-3.6 1.4-3.6 3.8 0 2.3 1.2 3.6 3.6 3.6h2.2v-7.4h-2.2zm10-4.6h5v15c0 3.2-1.3 5-4.4 5.7l-1.5-3.5c1.1-.3 1.5-.9 1.5-2.2v-15h-.6z" fill="#FFFFFF"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">Django</span>
+                        </div>
+
+                        <!-- Git -->
+                        <div class="tech-item" data-tooltip="Version Control, Branching, CI/CD" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <rect x="5.5" y="5.5" width="37" height="37" rx="6" fill="#F05032" transform="rotate(45 24 24)"/>
+                                    <circle cx="16" cy="24" r="3" fill="#FFFFFF"/>
+                                    <circle cx="32" cy="18" r="3" fill="#FFFFFF"/>
+                                    <circle cx="32" cy="30" r="3" fill="#FFFFFF"/>
+                                    <path d="M18.5 24h6c2.5 0 4.5-2 4.5-4.5V18m0 4.5v7.5" stroke="#FFFFFF" stroke-width="2.5" fill="none"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">Git</span>
+                        </div>
+
+                        <!-- TensorFlow -->
+                        <div class="tech-item" data-tooltip="Neural Networks, ML Architectures" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <polygon points="24,4 40,13 40,23 24,14" fill="#FF6F00"/>
+                                    <polygon points="24,14 40,23 24,32 8,23" fill="#FFA800"/>
+                                    <polygon points="24,32 40,23 40,35 24,44" fill="#E65100"/>
+                                    <polygon points="8,13 24,4 24,14 8,23" fill="#FF8F00"/>
+                                    <polygon points="8,23 24,32 24,44 8,35" fill="#FF6F00"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">TensorFlow</span>
+                        </div>
+
+                        <!-- Keras -->
+                        <div class="tech-item" data-tooltip="High-Level Neural Modeling" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <rect width="48" height="48" rx="8" fill="#D00000"/>
+                                    <path d="M14 10h6v11l8-11h8l-10 13 11 15h-8l-9-12v12h-6V10z" fill="#FFFFFF"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">Keras</span>
+                        </div>
+
+                        <!-- Flask -->
+                        <div class="tech-item" data-tooltip="Lightweight Python Microservices" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <path d="M21 8h6v6l10 18c1.5 2.8-.5 6-3.8 6H14.8c-3.3 0-5.3-3.2-3.8-6l10-18V8z" fill="#000000"/>
+                                    <rect x="19" y="5" width="10" height="4" rx="2" fill="#000000"/>
+                                    <circle cx="21" cy="30" r="2" fill="#FFFFFF"/>
+                                    <circle cx="27" cy="27" r="1.5" fill="#FFFFFF"/>
+                                    <circle cx="25" cy="33" r="2.5" fill="#FFFFFF"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">Flask</span>
+                        </div>
+
+                        <!-- Pandas -->
+                        <div class="tech-item" data-tooltip="Dataframes, Feature Engineering" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <rect x="8" y="24" width="6" height="16" rx="3" fill="#150458"/>
+                                    <rect x="18" y="8" width="6" height="32" rx="3" fill="#FFD43B"/>
+                                    <rect x="28" y="16" width="6" height="24" rx="3" fill="#E70488"/>
+                                    <rect x="38" y="10" width="6" height="30" rx="3" fill="#150458"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">Pandas</span>
+                        </div>
+
+                        <!-- VSCode -->
+                        <div class="tech-item" data-tooltip="Extensions, Debugging, Dev Setup" data-hover="true">
+                            <div class="tech-icon-box">
+                                <svg viewBox="0 0 48 48">
+                                    <path d="M35.5 4.8l-18 13.8L9.8 13 4 16.5l8.5 7.5L4 31.5 9.8 35l7.7-5.6 18 13.8c1.5 1.1 3.5 0 3.5-1.8V6.6c0-1.8-2-2.9-3.5-1.8z" fill="#007ACC"/>
+                                    <path d="M35.5 4.8L22 17.5l13.5 13.5V4.8z" fill="#1F9CF0"/>
+                                    <path d="M35.5 43.2L22 30.5 35.5 17v26.2z" fill="#0066B8"/>
+                                </svg>
+                            </div>
+                            <span class="tech-label">VSCode</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION: RELEVANT COURSEWORK ===== -->
+        <section class="coursework-section reveal" id="coursework">
+            <h2 class="section-headline">Relevant Coursework</h2>
+            <p style="max-width: 680px; margin: 0 auto; color: var(--color-text-muted);">
+                Foundational computer science theory and applied computational rigor completed at The College of Wooster.
+            </p>
+
+            <div class="coursework-grid">
+                <!-- Course 1 -->
+                <div class="course-card" data-hover="true">
+                    <div>
+                        <span class="course-badge theory">Theory & Rigor</span>
+                        <h4>Algorithm Analysis</h4>
+                        <p>Asymptotic runtime bounds, divide-and-conquer paradigms, greedy strategies, dynamic programming, and NP-completeness reductions.</p>
+                    </div>
+                    <div class="course-topics">
+                        <span class="topic-pill">Big-O Bounds</span>
+                        <span class="topic-pill">Dynamic Prog</span>
+                        <span class="topic-pill">NP-Hard</span>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card" data-hover="true">
+                    <div>
+                        <span class="course-badge systems">Core CS</span>
+                        <h4>Data Structures & Algorithms</h4>
+                        <p>Implementation of binary search trees, graph traversals (BFS/DFS), priority heaps, hash tables, and computational trade-offs.</p>
+                    </div>
+                    <div class="course-topics">
+                        <span class="topic-pill">Graph Trees</span>
+                        <span class="topic-pill">Hash Maps</span>
+                        <span class="topic-pill">Heaps</span>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card" data-hover="true">
+                    <div>
+                        <span class="course-badge systems">Full-Stack SWE</span>
+                        <h4>Software Engineering</h4>
+                        <p>Agile development lifecycles, test-driven development (TDD), modular architecture, code reviews, and scalable system integration.</p>
+                    </div>
+                    <div class="course-topics">
+                        <span class="topic-pill">System Design</span>
+                        <span class="topic-pill">TDD</span>
+                        <span class="topic-pill">CI/CD</span>
+                    </div>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="course-card" data-hover="true">
+                    <div>
+                        <span class="course-badge systems">Data Systems</span>
+                        <h4>Database Systems</h4>
+                        <p>Relational algebra, schema normalization (3NF/BCNF), SQL query optimization, transactions, ACID consistency, and indexing.</p>
+                    </div>
+                    <div class="course-topics">
+                        <span class="topic-pill">Postgres/MySQL</span>
+                        <span class="topic-pill">Normalization</span>
+                        <span class="topic-pill">Indexing</span>
+                    </div>
+                </div>
+
+                <!-- Course 5 -->
+                <div class="course-card" data-hover="true">
+                    <div>
+                        <span class="course-badge theory">Languages</span>
+                        <h4>Programming Languages</h4>
+                        <p>Comparative paradigm analysis (functional, object-oriented, imperative), type systems, operational semantics, and memory models.</p>
+                    </div>
+                    <div class="course-topics">
+                        <span class="topic-pill">Functional</span>
+                        <span class="topic-pill">Type Systems</span>
+                        <span class="topic-pill">Memory</span>
+                    </div>
+                </div>
+
+                <!-- Course 6 -->
+                <div class="course-card" data-hover="true">
+                    <div>
+                        <span class="course-badge theory">AI & Generative</span>
+                        <h4>Machine Learning for Creative Practice</h4>
+                        <p>Deep neural architectures, latent diffusion, generative synthesis, loss functions, and interactive human-AI co-creation pipelines.</p>
+                    </div>
+                    <div class="course-topics">
+                        <span class="topic-pill">Diffusion</span>
+                        <span class="topic-pill">PyTorch</span>
+                        <span class="topic-pill">Latent Space</span>
+                    </div>
+                </div>
+
+                <!-- Course 7 -->
+                <div class="course-card" data-hover="true">
+                    <div>
+                        <span class="course-badge math">Mathematics</span>
+                        <h4>Mathematical Computing</h4>
+                        <p>Numerical linear algebra, matrix factorizations, floating-point stability, discrete transformations, and computational modeling.</p>
+                    </div>
+                    <div class="course-topics">
+                        <span class="topic-pill">Linear Algebra</span>
+                        <span class="topic-pill">Eigenvalues</span>
+                        <span class="topic-pill">Numerical</span>
+                    </div>
+                </div>
+
+                <!-- Course 8 -->
+                <div class="course-card" data-hover="true">
+                    <div>
+                        <span class="course-badge math">Mathematics</span>
+                        <h4>Applied Calculus (Diff & Integral)</h4>
+                        <p>Multivariate rate analysis, gradient descent mechanics, continuous modeling, partial derivatives, and optimization frontiers.</p>
+                    </div>
+                    <div class="course-topics">
+                        <span class="topic-pill">Gradients</span>
+                        <span class="topic-pill">Optimization</span>
+                        <span class="topic-pill">Calculus</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION: FEATURED PROJECTS & RESEARCH ===== -->
+        <section class="projects reveal" id="projects">
             <div class="projects-header">
                 <h2>Featured Projects and Research</h2>
                 <div class="section-tag">(01 - 07)</div>
             </div>
 
-         <div class="grid">
+            <!-- Project Filters -->
+            <div class="project-filters">
+                <button class="filter-btn active" onclick="filterProjects('all')">All Works (7)</button>
+                <button class="filter-btn" onclick="filterProjects('ai')">🧠 AI & Deep Learning</button>
+                <button class="filter-btn" onclick="filterProjects('web')">💻 Full-Stack & Web</button>
+                <button class="filter-btn" onclick="filterProjects('research')">🔬 Research & Bio</button>
+            </div>
 
-            <a href="https://www.dropbox.com/scl/fi/vtg5mjvnpb6oz94dgclc3/Osen_Mac-Iriase_I.S.-thesis.pdf?rlkey=eacumgsg5isfafxvt2m38jft4&st=45943re7&e=1&dl=0" target="_blank" style="text-decoration: none; color: inherit;">
-                <div class="card" style="background-color: var(--color-pink-bloom);">
-                    <div class="card-number">01</div>
-                    <h3>Senior Thesis</h3>
-                    <p>Improving controllability in image synthesis using structural conditioning (sketches) and Stable Cascade.</p>
-                    <div class="project-tags">Deep Learning, Python</div>
-                    
-                    <div style="margin-top: 15px; font-size: 0.75rem; font-weight: bold; color: var(--color-green-army);">
-                        VIEW PDF ↗
-                    </div>
-                </div>
-            </a>
-
-                <div class="card">
-                    <div class="card-number">02</div>
-                    <h3>Genome Algorithms</h3>
-                    <p>Algorithmic analysis of genomic data sequences for healthcare applications.</p>
-                    <div class="project-tags">Bioinformatics, Algorithms</div>
-                </div>
-
-                <div class="card" style="background-color: var(--color-pink-rose);">
-                    <div class="card-number" style="color: var(--color-pink-bloom);">03</div>
-                    <h3>Personal Portfolio Design</h3>
-                    <p>Responsive digital wireframes utilizing organic shapes and soft botanical palettes.</p>
-                    <div class="project-tags">UI/UX, CSS</div>
+            <!-- Senior Thesis Dedicated Deep-Dive Banner -->
+            <div class="thesis-spotlight-wrapper project-item" data-category="ai research">
+                <div class="thesis-header">
+                    <span class="thesis-badge">Independently Authored Research</span>
+                    <span style="font-size: 0.85rem; color: #737765;">Wooster, OH & Goldsmiths Univ of London</span>
                 </div>
                 
-               <a href="https://github.com/maciriase26/Object-Detection.git" target="_blank" style="text-decoration: none; color: inherit;">
-                    <div class="card" style="background-color: var(--color-pink-bloom);">
-                        <div class="card-number">04</div>
-                        <h3>Object Detection</h3>
-                        <p>Implementation of real-time object detection models and computer vision workflows.</p>
-                        <div class="project-tags">Python, Computer Vision</div>
+                <div class="thesis-grid">
+                    <div>
+                        <h3 style="font-size: 1.85rem; margin: 0 0 10px 0; color: var(--color-green-army);">Senior Thesis: Controllable Image Synthesis</h3>
+                        <div class="card-subtitle">Improving Controllability in Image Synthesis using Structural Conditioning (Sketches) & Stable Cascade</div>
+                        <p style="margin-top: 12px; color: #404336;">
+                            Generative diffusion models often suffer from unpredictable composition when driven solely by text prompts. This year-long independent study investigated how structural conditioning via real-time sketches and edge maps constraints Stable Cascade to follow precise user intent.
+                        </p>
+                        <ul class="thesis-highlights-list">
+                            <li><strong>Pipeline Architecture:</strong> Engineered a human-in-the-loop drawing-to-image workflow using ml5.js and extended ComfyUI with StreamDiffusion for sub-second inference.</li>
+                            <li><strong>Evaluation:</strong> Conducted empirical HCI tests evaluating edge-detection fidelity and latency trade-offs.</li>
+                            <li><strong>Honours:</strong> Awarded <em>Top 3 Senior Thesis</em> by the Wooster CS Department; manuscript archived in the College Repository.</li>
+                        </ul>
+                        <div class="thesis-actions">
+                            <a href="https://www.dropbox.com/scl/fi/vtg5mjvnpb6oz94dgclc3/Osen_Mac-Iriase_I.S.-thesis.pdf?rlkey=eacumgsg5isfafxvt2m38jft4&st=45943re7&e=1&dl=0" target="_blank" class="btn-primary" data-hover="true">Read Full Thesis PDF ↗</a>
+                            <a href="Thesis_JAM.jpeg" target="_blank" class="btn-secondary" data-hover="true">View Thesis JAM Award ↗</a>
+                            <a href="https://www.linkedin.com/posts/faith-osen-mac-iriase-66874b248_ncur2026-generativeai-stablediffusion-ugcPost-7452807170636595200-0N0N?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD1VpfABBI3ah6y7jh50lmJhLgBnAwbJlb0" target="_blank" class="btn-secondary" data-hover="true">NCUR Presentation ↗</a>
+                        </div>
                     </div>
-                 </a>
-              
-                <a href="https://github.com/maciriase26/O-Positive.git" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div style="background: rgba(234, 207, 217, 0.3); border-radius: 20px; padding: 24px; border: 1px dashed var(--color-pink-rose);">
+                        <h4 style="margin-top: 0; color: var(--color-pink-rose-dark); font-size: 1.15rem;">Key Research Artifacts</h4>
+                        <div style="font-size: 0.92rem; line-height: 1.6; color: #4c4e42;">
+                            <p><strong>Primary Model:</strong> Stable Cascade (Stage A, B, C)</p>
+                            <p><strong>Conditioning:</strong> Real-time edge detection & sketch conditioning</p>
+                            <p><strong>Sub-Second Engine:</strong> StreamDiffusion + ComfyUI</p>
+                            <p><strong>Institutions:</strong> Goldsmiths (London) & Wooster</p>
+                        </div>
+                        <div class="project-tags" style="margin-top: 10px;">Deep Learning, PyTorch, HCI, Diffusion</div>
+                    </div>
+                </div>
+            </div>
 
-                    <div class="card" style="background-color: #92976b; border: 2px dashed #92976b;">
-                        <div class="card-number" style="color: var(--color-pink-bloom);">05</div>
-                        <h3 style="color: var(--color-pink-bloom);">O-Positive</h3>
-                        <p style="color: var(--color-white);">An intelligent habit-stacking app that uses AI to personalize your wellness journey while keeping you connected to your circle.</p>
-                        <div class="project-tags" style="color: var(--color-pink-bloom);">AI, UX/UI, Wellness</div>
+            <div class="grid">
+
+                <!-- 02: Grad Loan Navigator (NEW) -->
+                <div class="card featured-spotlight project-item" data-category="web">
+                    <div>
+                        <div class="card-number">02</div>
+                        <span class="course-badge systems" style="margin-bottom: 8px;">Full-Stack & Civic Tech</span>
+                        <h3>Grad Loan Navigator</h3>
+                        <div class="card-subtitle">Life After Grad PLUS — Financial Guidance & Policy Engine</div>
+                        <p>
+                            A production-grade, bilingual (English & Spanish) web application designed to help graduate students and families navigate the sunset of federal Grad PLUS loans. Features interactive borrowing cap calculators across 4 degree tiers (Associate to Ph.D./M.D.), federal grandfather clause analysis, and transparent private lender comparison tools.
+                        </p>
+                        <ul style="padding-left: 20px; font-size: 0.92rem; color: #555; margin-bottom: 12px;">
+                            <li>Built with <strong>TanStack Start</strong>, <strong>TypeScript</strong>, <strong>React</strong>, and <strong>Tailwind CSS</strong>.</li>
+                            <li>Comprehensive bilingual internationalization (i18n) across all financial guides and calculation models.</li>
+                            <li>Integrated with Supabase for data persistence and real-time state.</li>
+                        </ul>
                     </div>
-                </a>
+                    <div>
+                        <div class="project-tags">TypeScript, React, TanStack, Tailwind, Supabase, i18n</div>
+                        <a href="https://github.com/maciriase26/Grad-Loan-Navigator.git" target="_blank" class="project-action-link" data-hover="true">
+                            VIEW REPOSITORY ON GITHUB ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 03: O-Positive -->
+                <div class="card project-item" data-category="ai web" style="background-color: #92976b; border: 2px dashed #92976b;">
+                    <div>
+                        <div class="card-number" style="color: var(--color-pink-bloom);">03</div>
+                        <span class="course-badge theory" style="background: rgba(255,255,255,0.25); color: #fff; margin-bottom: 8px;">AI & Human Wellness</span>
+                        <h3 style="color: var(--color-pink-bloom);">O-Positive</h3>
+                        <div class="card-subtitle" style="color: #e5e9d3;">Intelligent Habit Stacking & Social Wellness System</div>
+                        <p style="color: var(--color-white);">
+                            An intelligent behavioral wellness platform that leverages machine learning to curate personalized habit stacks tailored to user chronotypes and energy curves, while keeping users supported in accountability circles.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="project-tags" style="color: var(--color-pink-bloom);">AI, UX/UI, Full-Stack, Wellness</div>
+                        <a href="https://github.com/maciriase26/O-Positive.git" target="_blank" class="project-action-link" style="color: var(--color-white);" data-hover="true">
+                            VIEW ON GITHUB ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 04: Real-Time Object Detection -->
+                <div class="card project-item" data-category="ai" style="background-color: var(--color-pink-bloom);">
+                    <div>
+                        <div class="card-number">04</div>
+                        <span class="course-badge systems" style="margin-bottom: 8px;">Computer Vision</span>
+                        <h3>Object Detection</h3>
+                        <div class="card-subtitle">Real-Time Edge Inference & Computer Vision Pipelines</div>
+                        <p>
+                            Implementation of high-frame-rate computer vision workflows for multi-class object detection, bounding-box regression, and edge video stream inference utilizing modern convolutional backbones and OpenCV.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="project-tags">Python, OpenCV, PyTorch, Deep Learning</div>
+                        <a href="https://github.com/maciriase26/Object-Detection.git" target="_blank" class="project-action-link" data-hover="true">
+                            VIEW ON GITHUB ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 05: Biology Research Assistant (Mosquito Population) -->
+                <div class="card project-item" data-category="research" style="background-color: var(--color-card-white); border: 2px solid var(--color-pink-soft);">
+                    <div>
+                        <div class="card-number">05</div>
+                        <span class="course-badge math" style="margin-bottom: 8px;">Computational Biology</span>
+                        <h3>Ecological Dynamics</h3>
+                        <div class="card-subtitle">College of Wooster Biology Dept — Dr. Laura Sirot Lab</div>
+                        <p>
+                            Conducted ecological laboratory experiments on mosquito population dynamics. Automated biological data ingestion, statistical hypothesis testing, and scientific visualization for published findings and institutional grant submissions.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="project-tags">Data Analysis, Biology, R/Python, Visualization</div>
+                        <span class="project-action-link" style="color: var(--color-green-army);">RESEARCH ASSISTANTSHIP</span>
+                    </div>
+                </div>
+
+                <!-- 06: Genome Algorithms -->
+                <div class="card project-item" data-category="research web">
+                    <div>
+                        <div class="card-number">06</div>
+                        <span class="course-badge theory" style="margin-bottom: 8px;">Bioinformatics</span>
+                        <h3>Genome Algorithms</h3>
+                        <div class="card-subtitle">Algorithmic Sequence Analysis for Healthcare Applications</div>
+                        <p>
+                            Algorithmic modeling and dynamic programming implementations for genomic sequence alignment, motif discovery, and nucleotide pattern matching geared toward personalized medicine diagnostics.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="project-tags">Bioinformatics, Algorithms, Dynamic Prog</div>
+                        <span class="project-action-link" style="color: var(--color-green-army);">ALGORITHMIC ANALYSIS</span>
+                    </div>
+                </div>
+
+                <!-- 07: Personal Portfolio & Design System -->
+                <div class="card project-item" data-category="web" style="background-color: var(--color-pink-rose);">
+                    <div>
+                        <div class="card-number" style="color: var(--color-pink-bloom);">07</div>
+                        <span class="course-badge systems" style="background: rgba(255,255,255,0.25); color: #fff; margin-bottom: 8px;">Design System</span>
+                        <h3 style="color: #fff;">Bespoke Portfolio</h3>
+                        <div class="card-subtitle" style="color: #fcecef;">Organic Geometry & Accessible Micro-Interactions</div>
+                        <p style="color: #fff;">
+                            Responsive digital design system incorporating organic shapes, warm botanical color palettes, custom spring physics cursor, and accessible layout architecture.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="project-tags" style="color: var(--color-pink-bloom);">UI/UX, CSS, Vanilla JS, Typography</div>
+                        <span class="project-action-link" style="color: #fff;">CURRENT PORTFOLIO</span>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <div class="accent-break">
+        <!-- Accent Quote Break -->
+        <div class="accent-break reveal" data-hover="true">
             <p>"nature is the best designer."</p>
         </div>
 
     </div> 
 
-    <section class="container" id="teaching">
+    <!-- ===== SECTION: TEACHING & IMPACT ===== -->
+    <section class="container reveal" id="teaching">
         <div class="projects-header">
             <h2>Teaching & Impact</h2>
             <div class="section-tag">Education & Mentorship</div>
         </div>
 
-        <div class="hero-text" style="margin-bottom: 60px;">
-            <p style="font-size: 1.3rem; border-left: 4px solid var(--color-pink-bloom); padding-left: 20px;">
-                I’ve worked with middle and high school students teaching coding, digital media, and technical skills. 
-                Beyond just instruction, I focused on helping students build confidence in problem-solving and navigating unfamiliar tools.
+        <div class="hero-text" style="margin-bottom: 50px;">
+            <p style="font-size: 1.35rem; border-left: 4px solid var(--color-pink-bloom); padding-left: 20px; line-height: 1.7;">
+                As a Computer Science major with a minor in Young Adolescence Education, I view technical empowerment as an act of accessibility. I’ve guided over 40 middle and high school students through their first lines of code, demystifying digital tools and turning frustration into independent debugging mastery.
             </p>
         </div>
 
         <div class="teaching-grid">
-            <div class="impact-card">
-                <h3>Teaching</h3>
+            <div class="impact-card" data-hover="true">
+                <h3>Teaching & Pedagogy</h3>
                 <ul>
-                    <li>Coding with Scratch and Python</li>
-                    <li>Graphics design using Inkscape</li>
-                    <li>Filmmaking and video editing</li>
-                    <li>STEM and introductory medicine topics</li>
+                    <li>Instruction in Python, Scratch, and computational logic</li>
+                    <li>Digital vector design using Inkscape and creative tooling</li>
+                    <li>Filmmaking, storyboarding, and video editing</li>
+                    <li>Introductory STEM and healthcare education modules</li>
                 </ul>
             </div>
 
-            <div class="impact-card">
-                <h3>Technical Support</h3>
+            <div class="impact-card" data-hover="true">
+                <h3>Technical Systems</h3>
                 <ul>
-                    <li>Set up and maintained software and internet systems</li>
-                    <li>Troubleshot issues in real time during classes</li>
-                    <li>Helped students debug code and recover work</li>
+                    <li>Provisioned and managed lab hardware and network systems</li>
+                    <li>Troubleshot classroom software and compilation bottlenecks</li>
+                    <li>Taught git concepts, version control, and backup hygiene</li>
                 </ul>
             </div>
 
-            <div class="impact-card">
-                <h3>Mentorship</h3>
+            <div class="impact-card" data-hover="true">
+                <h3>Mentorship & Coaching</h3>
                 <ul>
-                    <li>Guided students through logic instead of giving answers</li>
-                    <li>Helped beginners overcome coding frustration</li>
-                    <li>Supported different learning styles and pacing</li>
+                    <li>Socratic debugging: guiding students toward root causes</li>
+                    <li>Cultivating psychological safety to make mistakes openly</li>
+                    <li>Peer Health Educator at Wooster for mental health & wellness</li>
                 </ul>
             </div>
         </div>
 
         <div style="margin-top: 80px;">
-            <h2 style="font-size: 2rem;">Real-World Impact</h2>
+            <h2 style="font-size: 2.2rem; margin-bottom: 25px;">Real-World Impact</h2>
             <div class="grid">
-                <div class="card" style="background-color: var(--color-pink-bloom); transform: rotate(1.5deg);">
-                    <p><strong>Accessibility:</strong> Made technical concepts less intimidating for students who had never touched a line of code.</p>
+                <div class="card" style="background-color: var(--color-pink-bloom); transform: rotate(1.2deg);" data-hover="true">
+                    <p><strong>Accessibility:</strong> Demystified intimidating syntax into creative building blocks for students who had never opened a terminal.</p>
                 </div>
-                <div class="card" style="background-color: var(--color-pink-soft); transform: rotate(-1.5deg);">
-                    <p><strong>Growth:</strong> Helped students transition from zero experience to building their own independent projects.</p>
+                <div class="card" style="background-color: var(--color-pink-soft); transform: rotate(-1.2deg);" data-hover="true">
+                    <p><strong>Self-Efficacy:</strong> Guided students from simple tutorials to self-directed games, animations, and computational art.</p>
                 </div>
-                <div class="card" style="background-color: var(--color-pink-rose); border: 1px solid var(--color-pink-rose); transform: rotate(1.5deg);">
-                    <p><strong>Environment:</strong> Created a space where students felt comfortable making mistakes and asking questions.</p>
+                <div class="card" style="background-color: var(--color-pink-rose); color: #fff; transform: rotate(1.2deg);" data-hover="true">
+                    <p style="color: #fff;"><strong>Culture of Curiosity:</strong> Built collaborative classroom environments where "broken code" is celebrated as a discovery step.</p>
                 </div>
             </div>
         </div>
 
-        <div class="story-box">
+        <div class="story-box reveal">
             <p>
                 "One of the most rewarding parts of teaching was watching students go from being stuck on simple errors to independently debugging their own projects. That shift from frustration to confidence was often more important to me than the final result."
             </p>
         </div>
-            </section>
-                <div class="container"> 
-                    
-                <section id="honours" style="margin-top: 120px;">
-                <div class="projects-header">
-                    <h2>Recognition & Honours</h2>
-                    <div class="section-tag">Awards & Leadership</div>
-                </div>
-                
-                <div class="grid">
-                    <a href="Thesis_JAM.jpeg" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="card" style="background-color: var(--color-white); border: 2px solid var(--color-pink-soft);">
+    </section>
+
+    <!-- ===== SECTION: RECOGNITION & HONOURS ===== -->
+    <div class="container reveal"> 
+        <section id="honours" style="margin-top: 110px;">
+            <div class="projects-header">
+                <h2>Recognition & Honours</h2>
+                <div class="section-tag">Awards & Leadership</div>
+            </div>
+            
+            <div class="grid">
+                <!-- Award 1: Top 3 Thesis -->
+                <a href="Thesis_JAM.jpeg" target="_blank" style="text-decoration: none; color: inherit;" data-hover="true">
+                    <div class="honour-card">
+                        <div>
                             <div class="card-number">★</div>
                             <h3>Top 3 Most Interesting I.S.</h3>
-                            <p>Awarded by the Computer Science department for original research in structural conditioning for image synthesis.</p>
+                            <p>Awarded by the Department of Computer Science at The College of Wooster for original research in structural conditioning for image synthesis.</p>
+                        </div>
+                        <div>
                             <div class="project-tags">Academic Excellence</div>
-                            <div style="margin-top: 10px; font-size: 0.8rem; font-weight: bold; color: var(--color-pink-rose);">VIEW HONOUR ↗</div>
+                            <div class="project-action-link" style="color: var(--color-pink-rose);">VIEW HONOUR ↗</div>
                         </div>
-                    </a>
+                    </div>
+                </a>
 
-                    <a href="https://www.wecodeconference.com/meet-tf-2026#:~:text=MEXSA%20at%20CCNY.-,Osen%20Mac%2DIriase,-The%20College%20of" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="card" style="background-color: var(--color-white); border: 2px solid var(--color-pink-soft);">
+                <!-- Award 2: Harvard WECode -->
+                <a href="https://www.wecodeconference.com/meet-tf-2026#:~:text=MEXSA%20at%20CCNY.-,Osen%20Mac%2DIriase,-The%20College%20of" target="_blank" style="text-decoration: none; color: inherit;" data-hover="true">
+                    <div class="honour-card">
+                        <div>
                             <div class="card-number">★</div>
-                            <h3>Harvard WECode</h3>
-                            <p>Selected to attend the world’s largest student-led Women in Tech conference at Harvard University.</p>
-                            <div class="project-tags">Leadership & Networking</div>
-                            <div style="margin-top: 10px; font-size: 0.8rem; font-weight: bold; color: var(--color-pink-rose);">LEARN MORE ↗</div>
+                            <h3>Harvard WECode Fellowship</h3>
+                            <p>Selected fellow to attend the world’s largest student-led Women in Tech conference at Harvard University.</p>
                         </div>
-                    </a>
+                        <div>
+                            <div class="project-tags">Leadership & Diversity</div>
+                            <div class="project-action-link" style="color: var(--color-pink-rose);">LEARN MORE ↗</div>
+                        </div>
+                    </div>
+                </a>
 
-                    <a href="https://www.linkedin.com/posts/faith-osen-mac-iriase-66874b248_ncur2026-generativeai-stablediffusion-ugcPost-7452807170636595200-0N0N?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD1VpfABBI3ah6y7jh50lmJhLgBnAwbJlb0" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="card" style="background-color: var(--color-white); border: 2px solid var(--color-pink-soft);">
+                <!-- Award 3: NCUR 2026 Presenter -->
+                <a href="https://www.linkedin.com/posts/faith-osen-mac-iriase-66874b248_ncur2026-generativeai-stablediffusion-ugcPost-7452807170636595200-0N0N?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD1VpfABBI3ah6y7jh50lmJhLgBnAwbJlb0" target="_blank" style="text-decoration: none; color: inherit;" data-hover="true">
+                    <div class="honour-card">
+                        <div>
                             <div class="card-number">★</div>
-                            <h3>NCUR Presenter</h3>
-                            <p>Presented independent research at the National Conference on Undergraduate Research (2026).</p>
-                            <div class="project-tags">Research</div>
-                            <div style="margin-top: 10px; font-size: 0.8rem; font-weight: bold; color: var(--color-pink-rose);">VIEW ON LINKEDIN ↗</div>
+                            <h3>NCUR 2026 Presenter</h3>
+                            <p>Selected to present independent machine learning research at the National Conference on Undergraduate Research (2026).</p>
                         </div>
-                    </a>
-                    <a href="https://wooster.edu/2025/04/28/wooster-computer-programming-teams-finish-in-top-three-at-two-spring-competitions/" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="card" style="background-color: var(--color-white); border: 2px solid var(--color-pink-soft);">
+                        <div>
+                            <div class="project-tags">Peer-Reviewed Research</div>
+                            <div class="project-action-link" style="color: var(--color-pink-rose);">VIEW ON LINKEDIN ↗</div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Award 4: Denison Programming Contest -->
+                <a href="https://wooster.edu/2025/04/28/wooster-computer-programming-teams-finish-in-top-three-at-two-spring-competitions/" target="_blank" style="text-decoration: none; color: inherit;" data-hover="true">
+                    <div class="honour-card">
+                        <div>
                             <div class="card-number">★</div>
                             <h3>Denison Programming Contest</h3>
-                            <p>Secured Third Place at the 35th Annual Denison University Spring Programming Contest (2025).</p>
-                            <div class="project-tags">Competitive Programming</div>
-                            <div style="margin-top: 10px; font-size: 0.8rem; font-weight: bold; color: var(--color-pink-rose);">VIEW NEWS ARTICLE ↗</div>
+                            <p>Secured Third Place at the 35th Annual Denison University Spring Programming Contest (2025 competitive programming).</p>
                         </div>
-                    </a>
-                 </div>
-            </section>
-        </div>
-    
+                        <div>
+                            <div class="project-tags">Competitive Programming</div>
+                            <div class="project-action-link" style="color: var(--color-pink-rose);">VIEW NEWS ARTICLE ↗</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== FOOTER & CONNECT ===== -->
     <footer id="connect">
         <div class="footer-content">
             <div>
-                <h4>About</h4>
-                <p>Hello! I'm Osen. I'm a researcher focused on the intersection of AI and human-centered design.</p>
+                <h4>About Osen</h4>
+                <p>
+                    Creative technologist & researcher passionate about generative models, human-centered design, and accessible computing tools. Graduating May 2026 from The College of Wooster.
+                </p>
             </div>
             
             <div>
                 <h4>Connect</h4>
                 <ul>
-                    <li><a href="https://github.com/maciriase26">GitHub → @maciriase26</a></li>
-                    <li><a href="mailto:amazingfaith011@gmail.com">Email → amazingfaith011@gmail.com</a></li>
-                    <li><a href="https://www.linkedin.com/in/faith-osen-mac-iriase-66874b248">LinkedIn → Osen</a></li>
+                    <li><a href="https://github.com/maciriase26" target="_blank" data-hover="true">GitHub → @maciriase26</a></li>
+                    <li><a href="https://www.linkedin.com/in/faith-osen-mac-iriase-66874b248" target="_blank" data-hover="true">LinkedIn → Osen Mac-Iriase</a></li>
+                    <li>
+                        <a href="mailto:amazingfaith011@gmail.com" data-hover="true">Email → amazingfaith011@gmail.com</a>
+                        <button class="copy-email-btn" onclick="copyEmail()" data-hover="true">Copy</button>
+                    </li>
                 </ul>
             </div>
 
             <div>
-                <h4>Resume</h4>
-                <p>Download my resume to see my academic and professional journey!</p>
-                <a href="Osen_MacIriase_CV.pdf" class="resume-btn" download>Download Resume (PDF)</a>
+                <h4>Curriculum Vitae</h4>
+                <p>Download my comprehensive CV detailing academic research, publications, teaching, and technical coursework.</p>
+                <a href="Osen_MacIriase_CV.pdf" class="resume-btn" download data-hover="true">Download CV (PDF) 📄</a>
             </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 60px; font-size: 0.85rem; color: #b7bba9;">
+            Designed & Developed by Osen Mac-Iriase • Crafted with semantic HTML, custom CSS, & modern JS
         </div>
     </footer>
 
+    <!-- Back to top floating button -->
+    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top" data-hover="true">↑</button>
+
+    <!-- Toast Notification Element -->
+    <div id="toast">Email copied to clipboard! ✨</div>
+
+    <!-- ===== INTERACTIVE JAVASCRIPT ===== -->
     <script>
+        // Custom Star Cursor with Smooth Physics & Hover Expansion
         document.addEventListener('DOMContentLoaded', () => {
             const cursor = document.getElementById('custom-cursor');
+            const isTouch = window.matchMedia('(pointer: coarse)').matches;
             
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.display = 'block';
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
+            if (!isTouch && cursor) {
+                let mouseX = 0, mouseY = 0;
+                let currentX = 0, currentY = 0;
+                let isMoving = false;
+
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    if (!isMoving) {
+                        currentX = mouseX;
+                        currentY = mouseY;
+                        isMoving = true;
+                        cursor.style.display = 'block';
+                    }
+                });
+
+                document.addEventListener('mouseleave', () => {
+                    cursor.style.display = 'none';
+                    isMoving = false;
+                });
+
+                // Smooth Animation Frame Loop
+                function updateCursor() {
+                    if (isMoving) {
+                        currentX += (mouseX - currentX) * 0.25;
+                        currentY += (mouseY - currentY) * 0.25;
+                        cursor.style.left = currentX + 'px';
+                        cursor.style.top = currentY + 'px';
+                    }
+                    requestAnimationFrame(updateCursor);
+                }
+                requestAnimationFrame(updateCursor);
+
+                // Add magnetic / scale class when hovering interactive elements
+                const hoverElements = document.querySelectorAll('a, button, [data-hover="true"], .card, .tech-item');
+                hoverElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+                    el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+                });
+            }
+
+            // Scroll Reveal Animation via IntersectionObserver
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.08,
+                rootMargin: '0px 0px -40px 0px'
             });
 
-            document.addEventListener('mouseout', () => {
-                cursor.style.display = 'none';
-            });
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // Back to Top Button Visibility
+            const backToTopBtn = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            }, { passive: true });
         });
+
+        // Dual-Track Perspective Switcher
+        function switchTrack(track) {
+            const industryContent = document.getElementById('track-industry');
+            const phdContent = document.getElementById('track-phd');
+            const btnIndustry = document.getElementById('btn-industry');
+            const btnPhd = document.getElementById('btn-phd');
+
+            if (track === 'industry') {
+                industryContent.classList.add('active');
+                phdContent.classList.remove('active');
+                btnIndustry.classList.add('active');
+                btnPhd.classList.remove('active');
+            } else {
+                phdContent.classList.add('active');
+                industryContent.classList.remove('active');
+                btnPhd.classList.add('active');
+                btnIndustry.classList.remove('active');
+            }
+        }
+
+        // Project Filtering
+        function filterProjects(category) {
+            const items = document.querySelectorAll('.project-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            items.forEach(item => {
+                const cats = item.getAttribute('data-category');
+                if (category === 'all' || (cats && cats.includes(category))) {
+                    item.style.display = 'flex';
+                    if (item.classList.contains('thesis-spotlight-wrapper')) {
+                        item.style.display = 'block';
+                    }
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(15px)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 200);
+                }
+            });
+        }
+
+        // Copy Email to Clipboard with Toast Notification
+        function copyEmail() {
+            const email = 'amazingfaith011@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                showToast('Email copied to clipboard! ✨');
+            }).catch(() => {
+                showToast('Email: amazingfaith011@gmail.com');
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2600);
+        }
     </script>
 </body>
 </html>
